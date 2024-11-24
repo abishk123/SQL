@@ -1,0 +1,294 @@
+SQL> select * FROM EMP
+  2  WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT
+  3  WHERE DNAME = 'RESEARCH' OR DNAME = 'SALES';
+WHERE DNAME = 'RESEARCH' OR DNAME = 'SALES'
+                                          *
+ERROR at line 3:
+ORA-00907: missing right parenthesis 
+
+
+SQL> select * FROM EMP
+  2  WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT
+  3  WHERE DNAME = 'RESEARCH' OR DNAME = 'SALES');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+
+11 rows selected.
+
+SQL> SELECT * FROM DEPT;
+
+    DEPTNO DNAME          LOC                                                                                                                                                                           
+---------- -------------- -------------                                                                                                                                                                 
+        10 ACCOUNTING     NEW YORK                                                                                                                                                                      
+        20 RESEARCH       DALLAS                                                                                                                                                                        
+        30 SALES          CHICAGO                                                                                                                                                                       
+        40 OPERATIONS     BOSTON                                                                                                                                                                        
+
+SQL> select * FROM EMP
+  2  WHERE DEPTNO = (SELECT DEPTNO FROM DEPT
+  3  WHERE DNAME = 'RESEARCH' OR DNAME = 'SALES');
+WHERE DEPTNO = (SELECT DEPTNO FROM DEPT
+                *
+ERROR at line 2:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> SELECT SAL*12 AS ANN_SAL,EMPNO,HIREDATE FROM EMP
+  2  WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT
+  3  WHERE INSTR(DNAME,'O',1,1) != 0 AND INSTR(LOC,'O',1,1) != 0);
+
+   ANN_SAL      EMPNO HIREDATE                                                                                                                                                                          
+---------- ---------- ---------                                                                                                                                                                         
+     29400       7782 09-JUN-81                                                                                                                                                                         
+     60000       7839 17-NOV-81                                                                                                                                                                         
+     15600       7934 23-JAN-82                                                                                                                                                                         
+
+SQL> SELECT DEPTNO FROM DEPT
+  2  WHERE INSTR(DNAME,'O',1,1) != 0 AND INSTR(LOC,'O',1,1) != 0;
+
+    DEPTNO                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+        40                                                                                                                                                                                              
+
+SQL> SELECT * FROM EMP
+  2  WHERE DEPTNO IN (10,40);
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10                                                                                                                   
+
+SQL> SELECT * FROM EMP WHERE DEPTNO =40;
+
+no rows selected
+
+SQL> SELECT * FROM DEPT
+  2  WHERE DEPTNO IN (SELECT DEPTNO FROM EMP
+  3  WHERE SAL BETWEEN 3000 AND 5000);
+
+    DEPTNO DNAME          LOC                                                                                                                                                                           
+---------- -------------- -------------                                                                                                                                                                 
+        10 ACCOUNTING     NEW YORK                                                                                                                                                                      
+        20 RESEARCH       DALLAS                                                                                                                                                                        
+
+SQL> DESC PRODUCT
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ PID                                                                                                               NOT NULL NUMBER(5)
+ PNAME                                                                                                                      VARCHAR2(15)
+ PRICE                                                                                                                      NUMBER(3)
+ PSTOCK                                                                                                                     NUMBER(3)
+ MFD                                                                                                                        DATE
+
+SQL> ALTER TABLE PRODUCT
+  2  RENAME COLUMN PSTOCK TO ID;
+
+Table altered.
+
+SQL> DESC PRODUCT
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ PID                                                                                                               NOT NULL NUMBER(5)
+ PNAME                                                                                                                      VARCHAR2(15)
+ PRICE                                                                                                                      NUMBER(3)
+ ID                                                                                                                         NUMBER(3)
+ MFD                                                                                                                        DATE
+
+SQL> DESC CUSTOMER
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ CID                                                                                                               NOT NULL NUMBER(5)
+ CNAME                                                                                                             NOT NULL VARCHAR2(15)
+ AGE                                                                                                               NOT NULL NUMBER(2)
+ NOOFITEMS                                                                                                                  NUMBER(2)
+ PRODUCTS                                                                                                                   NUMBER(5)
+
+SQL> ALTER TABLE CUSTOMER
+  2  DROP COLUMN NOOFITEMS;
+
+Table altered.
+
+SQL> ALTER TABLE CUSTOMER
+  2  RENAME COLUMN PRODUCTS TO ADDRESS;
+
+Table altered.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> ALTER TABLE PRODUCT
+  2  MODIFY ID NUMBER(5) REFERENCES CUSTOMER(CID);
+
+Table altered.
+
+SQL> DESC PRODUCT
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ PID                                                                                                               NOT NULL NUMBER(5)
+ PNAME                                                                                                                      VARCHAR2(15)
+ PRICE                                                                                                                      NUMBER(3)
+ ID                                                                                                                         NUMBER(5)
+ MFD                                                                                                                        DATE
+
+SQL> DESC CUSTOMER
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ CID                                                                                                               NOT NULL NUMBER(5)
+ CNAME                                                                                                             NOT NULL VARCHAR2(15)
+ AGE                                                                                                               NOT NULL NUMBER(2)
+ ADDRESS                                                                                                                    NUMBER(5)
+
+SQL> ALTER TABLE CUSTOMER
+  2  MODIFY ADDRESS VARCHAR(20);
+MODIFY ADDRESS VARCHAR(20)
+       *
+ERROR at line 2:
+ORA-02267: column type incompatible with referenced column type 
+
+
+SQL> ALTER TABLE CUSTOMER
+  2  DROP COLUMN ADDRESS;
+
+Table altered.
+
+SQL> ALTER TABLE CUSTOMER
+  2  ADD ADD VARCHAR(20);
+ADD ADD VARCHAR(20)
+    *
+ERROR at line 2:
+ORA-00904: : invalid identifier 
+
+
+SQL>  ALTER TABLE CUSTOMER
+  2  ADD COLUMN ADDRESS VARCHAR(20);
+ADD COLUMN ADDRESS VARCHAR(20)
+    *
+ERROR at line 2:
+ORA-00904: : invalid identifier 
+
+
+SQL> ALTER TABLE CUSTOMER
+  2  ADD ADDRESS VARCHAR(20);
+
+Table altered.
+
+SQL> DESC CUSTOMER
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ CID                                                                                                               NOT NULL NUMBER(5)
+ CNAME                                                                                                             NOT NULL VARCHAR2(15)
+ AGE                                                                                                               NOT NULL NUMBER(2)
+ ADDRESS                                                                                                                    VARCHAR2(20)
+
+SQL> DESC PRODUCT;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ PID                                                                                                               NOT NULL NUMBER(5)
+ PNAME                                                                                                                      VARCHAR2(15)
+ PRICE                                                                                                                      NUMBER(3)
+ ID                                                                                                                         NUMBER(5)
+ MFD                                                                                                                        DATE
+
+SQL> INSERT INTO TABLE CUSTOMER VALUES(00111,'RAHUL',32,'PALAMANER-AP');
+INSERT INTO TABLE CUSTOMER VALUES(00111,'RAHUL',32,'PALAMANER-AP')
+            *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> INSERT INTO CUSTOMER VALUES(00111,'RAHUL',32,'PALAMANER-AP');
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMER VALUES(00222,'KASI',21,'CHITTOOR-AP');
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMER VALUES(00121,'PRIYA',25,'BELLANDUR-KS');
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMER VALUES(00215,'RAKESH',37,'KADAPA-AP');
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMER VALUES(00321,'MEHTA',52,'ANANTAPUR');
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMER(CID,AGE,ADDRESS)
+  2  VALUES(00512,40,'KEERTHI');
+INSERT INTO CUSTOMER(CID,AGE,ADDRESS)
+*
+ERROR at line 1:
+ORA-01400: cannot insert NULL into ("SCOTT"."CUSTOMER"."CNAME") 
+
+
+SQL> INSERT INTO CUSTOMER(CID,AGE,CNAME)
+  2  VALUES(00512,40,'KEERTHI');
+
+1 row created.
+
+SQL> SELECT * FROM CUSTOMER;
+
+       CID CNAME                  AGE ADDRESS                                                                                                                                                           
+---------- --------------- ---------- --------------------                                                                                                                                              
+       111 RAHUL                   32 PALAMANER-AP                                                                                                                                                      
+       222 KASI                    21 CHITTOOR-AP                                                                                                                                                       
+       121 PRIYA                   25 BELLANDUR-KS                                                                                                                                                      
+       215 RAKESH                  37 KADAPA-AP                                                                                                                                                         
+       321 MEHTA                   52 ANANTAPUR                                                                                                                                                         
+       512 KEERTHI                 40                                                                                                                                                                   
+
+6 rows selected.
+
+SQL> DESC PRODUCT
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ PID                                                                                                               NOT NULL NUMBER(5)
+ PNAME                                                                                                                      VARCHAR2(15)
+ PRICE                                                                                                                      NUMBER(3)
+ ID                                                                                                                         NUMBER(5)
+ MFD                                                                                                                        DATE
+
+SQL> INSERT INTO PRODUCT VALUES(0001,WASHINGMACHINE,5999,321,'02-FEB-24');
+INSERT INTO PRODUCT VALUES(0001,WASHINGMACHINE,5999,321,'02-FEB-24')
+                                *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> INSERT INTO PRODUCT VALUES(0001,'WASHINGMACHINE',5999,321,'02-FEB-24');
+INSERT INTO PRODUCT VALUES(0001,'WASHINGMACHINE',5999,321,'02-FEB-24')
+                                                 *
+ERROR at line 1:
+ORA-01438: value larger than specified precision allowed for this column 
+
+
+SQL> INSERT INTO PRODUCT VALUES(0001,'WASHINGMACHINE',2999,321,'02-FEB-24');
+INSERT INTO PRODUCT VALUES(0001,'WASHINGMACHINE',2999,321,'02-FEB-24')
+                                                 *
+ERROR at line 1:
+ORA-01438: value larger than specified precision allowed for this column 
+
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF

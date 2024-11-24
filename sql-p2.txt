@@ -1,0 +1,431 @@
+SQL> select a.ANAME,B.NAME
+  2  FROM AUTHOR A,BOOK B
+  3  ON A.AID = B.AID;
+ON A.AID = B.AID
+*
+ERROR at line 3:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select a.ANAME,B.NAME
+  2  FROM AUTHOR A INNER JOIN BOOK B
+  3  ON A.AID = B.AID;
+
+ANAME                NAME                                                                                                                                                                               
+-------------------- --------------------                                                                                                                                                               
+PENCIL PARTHU        GOOD DEEDS                                                                                                                                                                         
+JANAKI               FIFTY SHADES OF GREY                                                                                                                                                               
+RAGHAVENDRA          THE BATMAN                                                                                                                                                                         
+SAVI                 SHAWSHANK REDEMPTION                                                                                                                                                               
+RADIANT              PRISON BREAK                                                                                                                                                                       
+PENCIL PARTHU        READER                                                                                                                                                                             
+TAGHORE              KALKI2084AD                                                                                                                                                                        
+RANGANATHAM          NEEDS TO LIVE                                                                                                                                                                      
+
+8 rows selected.
+
+SQL> DESC BOOK;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ NAME                                                                                                              NOT NULL VARCHAR2(20)
+ BID                                                                                                               NOT NULL NUMBER(5)
+ PUBLISHEDON                                                                                                                DATE
+ AID                                                                                                                        NUMBER(6)
+ NOOFPAGES                                                                                                                  NUMBER(3)
+
+SQL> select a.ANAME,B.NAME
+  2  FROM AUTHOR A INNER JOIN BOOK B
+  3  ON A.DOB LIKE '%87%' AND B.PRICE > 500 AND A.AID = B.AID;
+ON A.DOB LIKE '%87%' AND B.PRICE > 500 AND A.AID = B.AID
+                         *
+ERROR at line 3:
+ORA-00904: "B"."PRICE": invalid identifier 
+
+
+SQL> DESC BOOK
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ NAME                                                                                                              NOT NULL VARCHAR2(20)
+ BID                                                                                                               NOT NULL NUMBER(5)
+ PUBLISHEDON                                                                                                                DATE
+ AID                                                                                                                        NUMBER(6)
+ NOOFPAGES                                                                                                                  NUMBER(3)
+
+SQL> SELECT C.*,P.PID
+  2  FROM PRODUCT P INNER JOIN CUSTOMER C
+  3  ON P.PRICE BETWEEN 500 AND 1000 AND MFD LIKE '%AUG-90%' AND P.PID = C.ID;
+ON P.PRICE BETWEEN 500 AND 1000 AND MFD LIKE '%AUG-90%' AND P.PID = C.ID
+                                                                    *
+ERROR at line 3:
+ORA-00904: "C"."ID": invalid identifier 
+
+
+SQL>  SELECT C.*,P.PID
+  2   FROM PRODUCT P INNER JOIN CUSTOMER C
+  3   ON P.PRICE BETWEEN 500 AND 1000 AND MFD LIKE '%AUG-90%' AND P.PID = C.PID;
+ ON P.PRICE BETWEEN 500 AND 1000 AND MFD LIKE '%AUG-90%' AND P.PID = C.PID
+                                                                     *
+ERROR at line 3:
+ORA-00904: "C"."PID": invalid identifier 
+
+
+SQL> DESC CUSTOMER;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ CID                                                                                                               NOT NULL NUMBER(5)
+ CNAME                                                                                                             NOT NULL VARCHAR2(15)
+ AGE                                                                                                               NOT NULL NUMBER(2)
+ ADDRESS                                                                                                                    VARCHAR2(20)
+
+SQL> DESC PRODUCT;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ PID                                                                                                               NOT NULL NUMBER(5)
+ PNAME                                                                                                             NOT NULL VARCHAR2(15)
+ PRICE                                                                                                             NOT NULL NUMBER(5)
+ ID                                                                                                                         NUMBER(5)
+ MFD                                                                                                                        DATE
+
+SQL>  SELECT C.*,P.PID
+  2   FROM PRODUCT P INNER JOIN CUSTOMER C
+  3   ON P.PRICE BETWEEN 500 AND 1000 AND MFD LIKE '%AUG-90%' AND P.ID = C.CID;
+
+no rows selected
+
+SQL> SELECT * FROM PRODUCT;
+
+       PID PNAME                PRICE         ID MFD                                                                                                                                                    
+---------- --------------- ---------- ---------- ---------                                                                                                                                              
+       112 SHIRT                  599        321 24-JAN-23                                                                                                                                              
+       223 WASHINGMACHINE        8999        222 02-JAN-24                                                                                                                                              
+       332 FURNITURE             5999        321 23-MAR-23                                                                                                                                              
+       365 BAG                   2000        111 28-FEB-24                                                                                                                                              
+       245 IRONBOX               1560        121                                                                                                                                                        
+       147 SOAP                   300        215 05-MAY-24                                                                                                                                              
+
+6 rows selected.
+
+SQL> SELECT * FROM EMP
+  2  WHERE SAL = (SELECT SAL FROM EMP
+  3  WHERE ENAME = 'MARTIN');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                   
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                                                                   
+
+SQL> SELECT E1.*
+  2  FROM EMP E1,EMP E2
+  3  WHERE E2.ENAME = 'MARTIN' AND E1.SAL = E2.SAL;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                   
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                                                                   
+
+SQL> SELECT E1.*
+  2  FROM EMP E1,EMP E2
+  3  WHERE E2.ENAME = 'JONES' AND E1.JOB = E2.JOB;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+
+SQL> SELECT * FROM EMP
+  2  WHERE JOB = (SELECT JOB FROM EMP
+  3  WHERE ENAME = 'JONES';
+WHERE JOB = (SELECT JOB FROM EMP
+             *
+ERROR at line 2:
+ORA-00921: unexpected end of SQL command 
+
+
+SQL> SELECT * FROM EMP
+  2  WHERE JOB = (SELECT JOB FROM EMP
+  3  WHERE ENAME = 'JONES');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+
+SQL> SELECT E1.ENAME,E2.ENAME
+  2  FROM EMP E1,EMP E2
+  3  WHERE E2.EMPNO = E1.MGR;
+
+ENAME      ENAME                                                                                                                                                                                        
+---------- ----------                                                                                                                                                                                   
+SMITH      FORD                                                                                                                                                                                         
+ALLEN      BLAKE                                                                                                                                                                                        
+WARD       BLAKE                                                                                                                                                                                        
+JONES      KING                                                                                                                                                                                         
+MARTIN     BLAKE                                                                                                                                                                                        
+BLAKE      KING                                                                                                                                                                                         
+CLARK      KING                                                                                                                                                                                         
+SCOTT      JONES                                                                                                                                                                                        
+TURNER     BLAKE                                                                                                                                                                                        
+ADAMS      SCOTT                                                                                                                                                                                        
+JAMES      BLAKE                                                                                                                                                                                        
+FORD       JONES                                                                                                                                                                                        
+MILLER     CLARK                                                                                                                                                                                        
+
+13 rows selected.
+
+SQL> SELECT ENAME,ENAME AS EN2
+  2  SELECT ENAME,EMPNO FROM EMP
+  3  
+SQL>  SELECT ENAME,EMPNO FROM EMP
+  2  WHERE EMPNO IN (SELECT MGR FROM EMP
+  3  );
+
+ENAME           EMPNO                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+JONES            7566                                                                                                                                                                                   
+BLAKE            7698                                                                                                                                                                                   
+CLARK            7782                                                                                                                                                                                   
+SCOTT            7788                                                                                                                                                                                   
+KING             7839                                                                                                                                                                                   
+FORD             7902                                                                                                                                                                                   
+
+6 rows selected.
+
+SQL> SELECT E1.ENAME ,E1.SAL, E2.ENAME,E2.SAL
+  2  FROM EMP E1,EMP E2
+  3  WHERE E2.EMPNO = E1.MGR;
+
+ENAME             SAL ENAME             SAL                                                                                                                                                             
+---------- ---------- ---------- ----------                                                                                                                                                             
+SMITH             800 FORD             3000                                                                                                                                                             
+ALLEN            1600 BLAKE            2850                                                                                                                                                             
+WARD             1250 BLAKE            2850                                                                                                                                                             
+JONES            2975 KING             5000                                                                                                                                                             
+MARTIN           1250 BLAKE            2850                                                                                                                                                             
+BLAKE            2850 KING             5000                                                                                                                                                             
+CLARK            2450 KING             5000                                                                                                                                                             
+SCOTT            3000 JONES            2975                                                                                                                                                             
+TURNER           1500 BLAKE            2850                                                                                                                                                             
+ADAMS            1100 SCOTT            3000                                                                                                                                                             
+JAMES             950 BLAKE            2850                                                                                                                                                             
+FORD             3000 JONES            2975                                                                                                                                                             
+MILLER           1300 CLARK            2450                                                                                                                                                             
+
+13 rows selected.
+
+SQL> SELECT E1.ENAME ,E1.SAL, E2.ENAME,E2.SAL
+  2  FROM EMP E1,EMP E2
+  3  WHERE E2.EMPNO = E1.MGR AND E1.JOB = 'ANALYST';
+
+ENAME             SAL ENAME             SAL                                                                                                                                                             
+---------- ---------- ---------- ----------                                                                                                                                                             
+SCOTT            3000 JONES            2975                                                                                                                                                             
+FORD             3000 JONES            2975                                                                                                                                                             
+
+SQL> SELECT ENAME,DNAME
+  2  FROM EMP LEFT OUTER JOIN DEPT
+  3  ON EMP.DEPTNO = DEPT.DEPTNO;
+
+ENAME      DNAME                                                                                                                                                                                        
+---------- --------------                                                                                                                                                                               
+SMITH      RESEARCH                                                                                                                                                                                     
+ALLEN      SALES                                                                                                                                                                                        
+WARD       SALES                                                                                                                                                                                        
+JONES      RESEARCH                                                                                                                                                                                     
+MARTIN     SALES                                                                                                                                                                                        
+BLAKE      SALES                                                                                                                                                                                        
+CLARK      ACCOUNTING                                                                                                                                                                                   
+SCOTT      RESEARCH                                                                                                                                                                                     
+KING       ACCOUNTING                                                                                                                                                                                   
+TURNER     SALES                                                                                                                                                                                        
+ADAMS      RESEARCH                                                                                                                                                                                     
+JAMES      SALES                                                                                                                                                                                        
+FORD       RESEARCH                                                                                                                                                                                     
+MILLER     ACCOUNTING                                                                                                                                                                                   
+
+14 rows selected.
+
+SQL> SELECT ENAME,DNAME
+  2  FROM DEPT LEFT OUTER JOIN EMP
+  3  WHERE EMP.DEPTNO = DEPT.DEPTNO;
+WHERE EMP.DEPTNO = DEPT.DEPTNO
+*
+ERROR at line 3:
+ORA-00905: missing keyword 
+
+
+SQL> SELECT ENAME,DNAME
+  2  FROM DEPT LEFT OUTER JOIN EMP
+  3  ON EMP.DEPTNO = DEPT.DEPTNO;
+
+ENAME      DNAME                                                                                                                                                                                        
+---------- --------------                                                                                                                                                                               
+CLARK      ACCOUNTING                                                                                                                                                                                   
+KING       ACCOUNTING                                                                                                                                                                                   
+MILLER     ACCOUNTING                                                                                                                                                                                   
+JONES      RESEARCH                                                                                                                                                                                     
+FORD       RESEARCH                                                                                                                                                                                     
+ADAMS      RESEARCH                                                                                                                                                                                     
+SMITH      RESEARCH                                                                                                                                                                                     
+SCOTT      RESEARCH                                                                                                                                                                                     
+WARD       SALES                                                                                                                                                                                        
+TURNER     SALES                                                                                                                                                                                        
+ALLEN      SALES                                                                                                                                                                                        
+JAMES      SALES                                                                                                                                                                                        
+BLAKE      SALES                                                                                                                                                                                        
+MARTIN     SALES                                                                                                                                                                                        
+           OPERATIONS                                                                                                                                                                                   
+
+15 rows selected.
+
+SQL> SELECT ENAME,DEPT
+  2  FROM EMP FULL JOIN DEPT DEPT
+  3  ON DEPT.DEPTNO = EMP.DEPTNO;
+SELECT ENAME,DEPT
+             *
+ERROR at line 1:
+ORA-00904: "DEPT": invalid identifier 
+
+
+SQL>  SELECT ENAME,DEPT
+  2   FROM EMP FULL JOIN DEPT
+  3  ON DEPT.DEPTNO = EMP.DEPTNO;
+ SELECT ENAME,DEPT
+              *
+ERROR at line 1:
+ORA-00904: "DEPT": invalid identifier 
+
+
+SQL> SELECT ENAME,DEPT.DNAME
+  2  FROM EMP FULL JOIN DEPT
+  3  ON DEPT.DEPTNO = EMP.DEPTNO;
+
+ENAME      DNAME                                                                                                                                                                                        
+---------- --------------                                                                                                                                                                               
+SMITH      RESEARCH                                                                                                                                                                                     
+ALLEN      SALES                                                                                                                                                                                        
+WARD       SALES                                                                                                                                                                                        
+JONES      RESEARCH                                                                                                                                                                                     
+MARTIN     SALES                                                                                                                                                                                        
+BLAKE      SALES                                                                                                                                                                                        
+CLARK      ACCOUNTING                                                                                                                                                                                   
+SCOTT      RESEARCH                                                                                                                                                                                     
+KING       ACCOUNTING                                                                                                                                                                                   
+TURNER     SALES                                                                                                                                                                                        
+ADAMS      RESEARCH                                                                                                                                                                                     
+JAMES      SALES                                                                                                                                                                                        
+FORD       RESEARCH                                                                                                                                                                                     
+MILLER     ACCOUNTING                                                                                                                                                                                   
+           OPERATIONS                                                                                                                                                                                   
+
+15 rows selected.
+
+SQL> SELECT DNAME,ENAME
+  2  FROM EMP RIGHT JOIN DEPT
+  3  ON DEPT.DEPTNO= EMP.DEPTNO;
+
+DNAME          ENAME                                                                                                                                                                                    
+-------------- ----------                                                                                                                                                                               
+ACCOUNTING     CLARK                                                                                                                                                                                    
+ACCOUNTING     KING                                                                                                                                                                                     
+ACCOUNTING     MILLER                                                                                                                                                                                   
+RESEARCH       JONES                                                                                                                                                                                    
+RESEARCH       FORD                                                                                                                                                                                     
+RESEARCH       ADAMS                                                                                                                                                                                    
+RESEARCH       SMITH                                                                                                                                                                                    
+RESEARCH       SCOTT                                                                                                                                                                                    
+SALES          WARD                                                                                                                                                                                     
+SALES          TURNER                                                                                                                                                                                   
+SALES          ALLEN                                                                                                                                                                                    
+SALES          JAMES                                                                                                                                                                                    
+SALES          BLAKE                                                                                                                                                                                    
+SALES          MARTIN                                                                                                                                                                                   
+OPERATIONS                                                                                                                                                                                              
+
+15 rows selected.
+
+SQL> SELECT MAX(SAL) FROM EMP
+  2  
+SQL> SELECT MAX(SAL),SAL
+  2  FROM EMP
+  3  GROUP BY SAL;
+
+  MAX(SAL)        SAL                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+      2450       2450                                                                                                                                                                                   
+      5000       5000                                                                                                                                                                                   
+      1300       1300                                                                                                                                                                                   
+      1250       1250                                                                                                                                                                                   
+      2850       2850                                                                                                                                                                                   
+      2975       2975                                                                                                                                                                                   
+      1100       1100                                                                                                                                                                                   
+      3000       3000                                                                                                                                                                                   
+       800        800                                                                                                                                                                                   
+      1600       1600                                                                                                                                                                                   
+      1500       1500                                                                                                                                                                                   
+       950        950                                                                                                                                                                                   
+
+12 rows selected.
+
+SQL> SELECT MAX(SAL),JOB
+  2  FROM EMP
+  3  GROUP BY JOB;
+
+  MAX(SAL) JOB                                                                                                                                                                                          
+---------- ---------                                                                                                                                                                                    
+      1300 CLERK                                                                                                                                                                                        
+      1600 SALESMAN                                                                                                                                                                                     
+      5000 PRESIDENT                                                                                                                                                                                    
+      2975 MANAGER                                                                                                                                                                                      
+      3000 ANALYST                                                                                                                                                                                      
+
+SQL> SELECT AVG(SAL),DEPTNO
+  2  FROM EMP
+  3  GROUP BY DEPTNO;
+
+  AVG(SAL)     DEPTNO                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+1566.66667         30                                                                                                                                                                                   
+      2175         20                                                                                                                                                                                   
+2916.66667         10                                                                                                                                                                                   
+
+SQL> SELECT SUM(SAL),JOB
+  2  FROM EMP
+  3  WHERE JOB != 'ANALYST'
+  4  GROUP BY JOB;
+
+  SUM(SAL) JOB                                                                                                                                                                                          
+---------- ---------                                                                                                                                                                                    
+      4150 CLERK                                                                                                                                                                                        
+      5600 SALESMAN                                                                                                                                                                                     
+      5000 PRESIDENT                                                                                                                                                                                    
+      8275 MANAGER                                                                                                                                                                                      
+
+SQL> SELECT COUNT(*),DEPTNO
+  2  FROM EMP
+  3  WHERE DEPTNO != 20
+  4  GROUP BY DEPTNO
+  5  HAVING COUNT(*)>3;
+
+  COUNT(*)     DEPTNO                                                                                                                                                                                   
+---------- ----------                                                                                                                                                                                   
+         6         30                                                                                                                                                                                   
+
+SQL> SELECT AVG(SAL),JOB
+  2  FROM EMP
+  3  GROUP BY JOB
+  4  HAVING AVG(SAL)>3000;
+
+  AVG(SAL) JOB                                                                                                                                                                                          
+---------- ---------                                                                                                                                                                                    
+      5000 PRESIDENT                                                                                                                                                                                    
+
+SQL> SELECT COUNT(*),ENAME
+  2  FROM EMP
+  3  GROUP BY ENAME
+  4  HAVING COUNT(*)>1;
+
+no rows selected
+
+SQL> SPOOL OFF

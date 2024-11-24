@@ -1,0 +1,115 @@
+SQL> SELECT ENAME,RANK()OVER(ORDER BY ENAME) FROM EMP;
+
+ENAME      RANK()OVER(ORDERBYENAME)                                                                                                                                                                     
+---------- ------------------------                                                                                                                                                                     
+ADAMS                             1                                                                                                                                                                     
+ALLEN                             2                                                                                                                                                                     
+BLAKE                             3                                                                                                                                                                     
+CLARK                             4                                                                                                                                                                     
+FORD                              5                                                                                                                                                                     
+JAMES                             6                                                                                                                                                                     
+JONES                             7                                                                                                                                                                     
+KING                              8                                                                                                                                                                     
+MARTIN                            9                                                                                                                                                                     
+MILLER                           10                                                                                                                                                                     
+SCOTT                            11                                                                                                                                                                     
+SMITH                            12                                                                                                                                                                     
+TURNER                           13                                                                                                                                                                     
+WARD                             14                                                                                                                                                                     
+
+14 rows selected.
+
+SQL> SELECT TRUNC(123.4543,2)FROM DUAL;
+
+TRUNC(123.4543,2)                                                                                                                                                                                       
+-----------------                                                                                                                                                                                       
+           123.45                                                                                                                                                                                       
+
+SQL> SELECT TRUNC(123.343,-3) FROM DUAL;
+
+TRUNC(123.343,-3)                                                                                                                                                                                       
+-----------------                                                                                                                                                                                       
+                0                                                                                                                                                                                       
+
+SQL> SELECT TRUNC(123.33,-1) FROM DUAL;
+
+TRUNC(123.33,-1)                                                                                                                                                                                        
+----------------                                                                                                                                                                                        
+             120                                                                                                                                                                                        
+
+SQL> SELECT TRUNC(TO_DATE('21-MAY-21','MM') FROM DEAL;
+SELECT TRUNC(TO_DATE('21-MAY-21','MM') FROM DEAL
+                                       *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> SELECT TRUNC(TO_DATE('21-MAY-21'),'MM') FROM DUAL;
+
+TRUNC(TO_                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+01-MAY-21                                                                                                                                                                                               
+
+SQL> SELECT TRUNC(TO_DATE(21-MAY-21'),'MON')FROM DUAL;
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> SELECT TRUNC(TO_DATE('21-MAY-21'),'MON')FROM DUAL;
+
+TRUNC(TO_                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+01-MAY-21                                                                                                                                                                                               
+
+SQL> SELECT TRUNC(LAST_DATE('21-MAY-21'),'YYYY') FROM DUAL;
+SELECT TRUNC(LAST_DATE('21-MAY-21'),'YYYY') FROM DUAL
+             *
+ERROR at line 1:
+ORA-00904: "LAST_DATE": invalid identifier 
+
+
+SQL> SELECT TRUNC(LAST_DAY('21-MAY-21'),'YYYY') FROM DUAL;
+
+TRUNC(LAS                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+01-JAN-21                                                                                                                                                                                               
+
+SQL> SELECT LAST_DAY(TO_DATE('21-MAY-21'),'YYYY') FROM DUAL;
+SELECT LAST_DAY(TO_DATE('21-MAY-21'),'YYYY') FROM DUAL
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> SELECT LAST_DAY('21-MAY-21') FROM DUAL;
+
+LAST_DAY(                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+31-MAY-21                                                                                                                                                                                               
+
+SQL> SELECT LAST_DAY('21-MAR-24','YYYY') FROM DUAL;
+SELECT LAST_DAY('21-MAR-24','YYYY') FROM DUAL
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> SELECT TRUNC(SYSDATE,'YEAR') FROM DUAL;
+
+TRUNC(SYS                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+01-JAN-24                                                                                                                                                                                               
+
+SQL> SELECT ADD_MONTHS(TRUNC(SYSDATE,'YEAR'),12)FROM DUAL;
+
+ADD_MONTH                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+01-JAN-25                                                                                                                                                                                               
+
+SQL> SELECT ADD_MONTHS(TRUNC(SYSDATE,'YEAR'),12)-1 FROM DUAL;
+
+ADD_MONTH                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+31-DEC-24                                                                                                                                                                                               
+
+SQL> SPOOL OFF

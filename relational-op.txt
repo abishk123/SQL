@@ -1,0 +1,87 @@
+SQL> select * from emp
+  2  where sal>3000;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7839 KING       PRESIDENT            17-NOV-81       5000                 
+        10                                                                      
+                                                                                
+
+SQL> select ename, hiredate, deptno from emp
+  2  where sal=3000;
+
+ENAME      HIREDATE      DEPTNO                                                 
+---------- --------- ----------                                                 
+SCOTT      19-APR-87         20                                                 
+FORD       03-DEC-81         20                                                 
+
+SQL> select sal *12 from emp
+  2  where job = 'SALESMAN';
+
+    SAL*12                                                                      
+----------                                                                      
+     19200                                                                      
+     15000                                                                      
+     15000                                                                      
+     18000                                                                      
+
+SQL> select sal *12, job from emp
+  2  where job = 'SALESMAN';
+
+    SAL*12 JOB                                                                  
+---------- ---------                                                            
+     19200 SALESMAN                                                             
+     15000 SALESMAN                                                             
+     15000 SALESMAN                                                             
+     18000 SALESMAN                                                             
+
+SQL> select sal *12, job from emp
+  2  where job != 'SALESMAN';
+
+    SAL*12 JOB                                                                  
+---------- ---------                                                            
+      9600 CLERK                                                                
+     35700 MANAGER                                                              
+     34200 MANAGER                                                              
+     29400 MANAGER                                                              
+     36000 ANALYST                                                              
+     60000 PRESIDENT                                                            
+     13200 CLERK                                                                
+     11400 CLERK                                                                
+     36000 ANALYST                                                              
+     15600 CLERK                                                                
+
+10 rows selected.
+
+SQL> SELECT * FROM EMP
+  2  WHERE COMM >= 1000;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400      
+        30                                                                      
+                                                                                
+
+SQL> SELECT DNAME FROM DEPT
+  2  WHERE LOC != 'CHICAGO';
+
+DNAME                                                                           
+--------------                                                                  
+ACCOUNTING                                                                      
+RESEARCH                                                                        
+OPERATIONS                                                                      
+
+SQL> SELECT DNAME,LOC FROM DEPT;
+
+DNAME          LOC                                                              
+-------------- -------------                                                    
+ACCOUNTING     NEW YORK                                                         
+RESEARCH       DALLAS                                                           
+SALES          CHICAGO                                                          
+OPERATIONS     BOSTON                                                           
+
+SQL> SPOOL OFF

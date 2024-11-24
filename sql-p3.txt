@@ -1,0 +1,734 @@
+SQL> select to_char(sysdate,'HH-MI') FROM DUAL;
+
+TO_CH                                                                                                                                                                                                   
+-----                                                                                                                                                                                                   
+09-27                                                                                                                                                                                                   
+
+SQL> select to_char(sysdate,'HH-MI') FROM DUAL;
+
+TO_CH                                                                                                                                                                                                   
+-----                                                                                                                                                                                                   
+09-28                                                                                                                                                                                                   
+
+SQL> SELECT TO_CHAR(HIREDATE,'HH-MI') FROM DUAL;
+SELECT TO_CHAR(HIREDATE,'HH-MI') FROM DUAL
+               *
+ERROR at line 1:
+ORA-00904: "HIREDATE": invalid identifier 
+
+
+SQL> SELECT TO_CHAR('23-MAY-21','YY'
+  2  )FROM DUAL;
+SELECT TO_CHAR('23-MAY-21','YY'
+               *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> SELECT TO_CHAR(TO_DATE('21-MAY-24'),'DY') FROM DUAL;
+
+TO_                                                                                                                                                                                                     
+---                                                                                                                                                                                                     
+TUE                                                                                                                                                                                                     
+
+SQL> SELECT SUBSTR(LOWER(ENAME),1,3) FROM EMP;
+
+SUB                                                                                                                                                                                                     
+---                                                                                                                                                                                                     
+smi                                                                                                                                                                                                     
+all                                                                                                                                                                                                     
+war                                                                                                                                                                                                     
+jon                                                                                                                                                                                                     
+mar                                                                                                                                                                                                     
+bla                                                                                                                                                                                                     
+cla                                                                                                                                                                                                     
+sco                                                                                                                                                                                                     
+kin                                                                                                                                                                                                     
+tur                                                                                                                                                                                                     
+ada                                                                                                                                                                                                     
+jam                                                                                                                                                                                                     
+for                                                                                                                                                                                                     
+mil                                                                                                                                                                                                     
+
+14 rows selected.
+
+SQL> SELECT SUBSTR(UPPER(JOB),-3,3) FROM EMP;
+
+SUB                                                                                                                                                                                                     
+---                                                                                                                                                                                                     
+ERK                                                                                                                                                                                                     
+MAN                                                                                                                                                                                                     
+MAN                                                                                                                                                                                                     
+GER                                                                                                                                                                                                     
+MAN                                                                                                                                                                                                     
+GER                                                                                                                                                                                                     
+GER                                                                                                                                                                                                     
+YST                                                                                                                                                                                                     
+ENT                                                                                                                                                                                                     
+MAN                                                                                                                                                                                                     
+ERK                                                                                                                                                                                                     
+ERK                                                                                                                                                                                                     
+YST                                                                                                                                                                                                     
+ERK                                                                                                                                                                                                     
+
+14 rows selected.
+
+SQL> SELECT REPLACE('DEVELOPER','ER','MENT') FROM DUAL;
+
+REPLACE('DE                                                                                                                                                                                             
+-----------                                                                                                                                                                                             
+DEVELOPMENT                                                                                                                                                                                             
+
+SQL> SELECT REPLACE('MADAM') FROM DUAL;
+SELECT REPLACE('MADAM') FROM DUAL
+       *
+ERROR at line 1:
+ORA-00938: not enough arguments for function 
+
+
+SQL> SELECT REVERSE('MADAM','RACECAR') FROM DUAL;
+SELECT REVERSE('MADAM','RACECAR') FROM DUAL
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> SELECT REVERSE('MADAM') FROM DUAL;
+
+REVER                                                                                                                                                                                                   
+-----                                                                                                                                                                                                   
+MADAM                                                                                                                                                                                                   
+
+SQL> SELECT REVERSE('MADAM'),REVERSE('RACECAR') FROM DUAL;
+
+REVER REVERSE                                                                                                                                                                                           
+----- -------                                                                                                                                                                                           
+MADAM RACECAR                                                                                                                                                                                           
+
+SQL> SELECT * FROM DUAL
+  2  WHERE REVERSE('MADAM')='MADAM' AND REVERSE('RACECAR')= 'RACECAR' ;
+
+D                                                                                                                                                                                                       
+-                                                                                                                                                                                                       
+X                                                                                                                                                                                                       
+
+SQL> SELECT * FROM EMP
+  2  WHERE SUBSTR(JOB,1,3) = 'MAN';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+
+SQL> SELECT * FROM EMP
+  2  WHERE INSTR(ENAME,'A')>0;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                   
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+
+7 rows selected.
+
+SQL> SELECT * FROM EMP
+  2  WHERE SUBSTR(ENAME,1,1) IN ('A','E','I','O','U');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+
+SQL> SELECT * FROM EMP
+  2  WHERE SUBSTR(JOB,1,1) IN ('A','E','I','O','U') AND SUBSTR(JOB,-1,1) IN ('A','E','I','O','U') AND INSTR(ENMAE,'A')>0;
+WHERE SUBSTR(JOB,1,1) IN ('A','E','I','O','U') AND SUBSTR(JOB,-1,1) IN ('A','E','I','O','U') AND INSTR(ENMAE,'A')>0
+                                                                                                       *
+ERROR at line 2:
+ORA-00904: "ENMAE": invalid identifier 
+
+
+SQL> SELECT * FROM EMP
+  2  WHERE SUBSTR(JOB,1,1) IN ('A','E','I','O','U') AND SUBSTR(JOB,-1,1) IN ('A','E','I','O','U') AND INSTR(ENAME,'A')>0;
+
+no rows selected
+
+SQL> SELECT CONCAT(ENAME,SAL) AS EMPDETAILS FROM EMP;
+
+EMPDETAILS                                                                                                                                                                                              
+--------------------------------------------------                                                                                                                                                      
+SMITH800                                                                                                                                                                                                
+ALLEN1600                                                                                                                                                                                               
+WARD1250                                                                                                                                                                                                
+JONES2975                                                                                                                                                                                               
+MARTIN1250                                                                                                                                                                                              
+BLAKE2850                                                                                                                                                                                               
+CLARK2450                                                                                                                                                                                               
+SCOTT3000                                                                                                                                                                                               
+KING5000                                                                                                                                                                                                
+TURNER1500                                                                                                                                                                                              
+ADAMS1100                                                                                                                                                                                               
+JAMES950                                                                                                                                                                                                
+FORD3000                                                                                                                                                                                                
+MILLER1300                                                                                                                                                                                              
+
+14 rows selected.
+
+SQL> SELECT LENGTH('JSPIDERS')-LENGTH(REPLACE('JSPIDERS','S')) FROM DUAL;
+
+LENGTH('JSPIDERS')-LENGTH(REPLACE('JSPIDERS','S'))                                                                                                                                                      
+--------------------------------------------------                                                                                                                                                      
+                                                 2                                                                                                                                                      
+
+SQL> SELECT LENGTH('SABHISHEKKUMARREDDY')-LENGTH(REPLACE('SABHISHEKKUMARREDDY','S')) FROM DUAL;
+
+LENGTH('SABHISHEKKUMARREDDY')-LENGTH(REPLACE('SABHISHEKKUMARREDDY','S'))                                                                                                                                
+------------------------------------------------------------------------                                                                                                                                
+                                                                       2                                                                                                                                
+
+SQL> SELECT LENGTH('SABHISHEKKUMARREDDY')-LENGTH(REPLACE('SABHISHEKKUMARREDDY','K')) FROM DUAL;
+
+LENGTH('SABHISHEKKUMARREDDY')-LENGTH(REPLACE('SABHISHEKKUMARREDDY','K'))                                                                                                                                
+------------------------------------------------------------------------                                                                                                                                
+                                                                       2                                                                                                                                
+
+SQL> SELECT LENGTH('SABHISHEKKUMARREDDY')-LENGTH(REPLACE('SABHISHEKKUMARREDDY','M'))FROM DUAL;
+
+LENGTH('SABHISHEKKUMARREDDY')-LENGTH(REPLACE('SABHISHEKKUMARREDDY','M'))                                                                                                                                
+------------------------------------------------------------------------                                                                                                                                
+                                                                       1                                                                                                                                
+
+SQL> SELECT CURRENT_DATE() FROM DUAL;
+SELECT CURRENT_DATE() FROM DUAL
+                   *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT CURRENT_DATE FROM DUAL;
+
+CURRENT_D                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+12-AUG-24                                                                                                                                                                                               
+
+SQL> SELECT SYSDATE FROM DUAL;
+
+SYSDATE                                                                                                                                                                                                 
+---------                                                                                                                                                                                               
+12-AUG-24                                                                                                                                                                                               
+
+SQL> SELECT SESSIONTIMEZONE FROM DUAL;
+
+SESSIONTIMEZONE                                                                                                                                                                                         
+---------------------------------------------------------------------------                                                                                                                             
++05:30                                                                                                                                                                                                  
+
+SQL> SELECT CURRENT_TIMESTAMP FROM DUAL;
+
+CURRENT_TIMESTAMP                                                                                                                                                                                       
+---------------------------------------------------------------------------                                                                                                                             
+12-AUG-24 10.32.46.583000 PM +05:30                                                                                                                                                                     
+
+SQL> SELECT MONTHS_BETWEEN(CURRENT_DATE,HIREDATE)/12 AS EXP FROM EMP;
+
+       EXP                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+43.6557539                                                                                                                                                                                              
+43.4810227                                                                                                                                                                                              
+43.4756464                                                                                                                                                                                              
+43.3627432                                                                                                                                                                                              
+ 42.876184                                                                                                                                                                                              
+ 43.282098                                                                                                                                                                                              
+43.1772593                                                                                                                                                                                              
+37.3170443                                                                                                                                                                                              
+42.7390873                                                                                                                                                                                              
+42.9299475                                                                                                                                                                                              
+37.2229582                                                                                                                                                                                              
+42.6933883                                                                                                                                                                                              
+42.6933883                                                                                                                                                                                              
+42.5562916                                                                                                                                                                                              
+
+14 rows selected.
+
+SQL> SELECT MONTHS_BETWEEN(CURRENT_DATE,HIREDATE) FROM EMP;
+
+MONTHS_BETWEEN(CURRENT_DATE,HIREDATE)                                                                                                                                                                   
+-------------------------------------                                                                                                                                                                   
+                           523.869057                                                                                                                                                                   
+                           521.772282                                                                                                                                                                   
+                           521.707766                                                                                                                                                                   
+                           520.352927                                                                                                                                                                   
+                           514.514218                                                                                                                                                                   
+                           519.385186                                                                                                                                                                   
+                           518.127121                                                                                                                                                                   
+                            447.80454                                                                                                                                                                   
+                           512.869057                                                                                                                                                                   
+                           515.159379                                                                                                                                                                   
+                           446.675508                                                                                                                                                                   
+                           512.320669                                                                                                                                                                   
+                           512.320669                                                                                                                                                                   
+                           510.675508                                                                                                                                                                   
+
+14 rows selected.
+
+SQL> SELECT ADD_MONTHS(CURRENT_DATE,12) FROM DUAL;
+
+ADD_MONTH                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+12-AUG-25                                                                                                                                                                                               
+
+SQL> SELECT ADD_MONTHS(CURRENT_DATE,12)+1 FROM DUAL;
+
+ADD_MONTH                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+13-AUG-25                                                                                                                                                                                               
+
+SQL> SELECT ADD_MONTHS(CURRENT_DATE,12*2) FROM DUAL;
+
+ADD_MONTH                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+12-AUG-26                                                                                                                                                                                               
+
+SQL> SELECT NEXT_DAY(CURRENT_DATE) FROM DUAL;
+SELECT NEXT_DAY(CURRENT_DATE) FROM DUAL
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> SELECT LAST_DAY('12-AUG-24') FROM DUAL;
+
+LAST_DAY(                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+31-AUG-24                                                                                                                                                                                               
+
+SQL> SELECT CURRENT_TIMESTAMP FROM DUAL;
+
+CURRENT_TIMESTAMP                                                                                                                                                                                       
+---------------------------------------------------------------------------                                                                                                                             
+12-AUG-24 10.40.52.597000 PM +05:30                                                                                                                                                                     
+
+SQL> SELECT NEXT_DAY('12-AUG-24') FROM DUAL;
+SELECT NEXT_DAY('12-AUG-24') FROM DUAL
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> SELECT NEXT_DAY(CURRENT_DATE,'MONDAY')FROM DUAL;
+
+NEXT_DAY(                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+19-AUG-24                                                                                                                                                                                               
+
+SQL> SELECT NEXT_DAY(CURRENT_DATE,'SUNDAY')FROM DUAL;
+
+NEXT_DAY(                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+18-AUG-24                                                                                                                                                                                               
+
+SQL> SELECT TO_DATE('1920-MAY-24','YYYY-MM-DD') FROM DUAL;
+
+TO_DATE('                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+24-MAY-20                                                                                                                                                                                               
+
+SQL> SELECT TO_CHAR('20-MAY-24','MM-YYYY-DD-DY') FROM DUAL;
+SELECT TO_CHAR('20-MAY-24','MM-YYYY-DD-DY') FROM DUAL
+               *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> SELECT TO_CHAR('20-MAY-24','MM-YYYY-DD') FROM DUAL;
+SELECT TO_CHAR('20-MAY-24','MM-YYYY-DD') FROM DUAL
+               *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> SELECT TO_CHAR(TO_DATE('20-MAY-24','MM-YYYY-DD') FROM DUAL;
+SELECT TO_CHAR(TO_DATE('20-MAY-24','MM-YYYY-DD') FROM DUAL
+                                                 *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> SELECT TO_CHAR(TO_DATE('20-MAY-24'),'MM-YYYY-DD') FROM DUAL;
+
+TO_CHAR(TO                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+05-2024-20                                                                                                                                                                                              
+
+SQL> SELECT TO_CHAR(TO_DATE('20-MAY-24'),'MM-YYYY-DD-DY') FROM DUAL;
+
+TO_CHAR(TO_DAT                                                                                                                                                                                          
+--------------                                                                                                                                                                                          
+05-2024-20-MON                                                                                                                                                                                          
+
+SQL> SELECT TO_CHAR('30-O7-2024','YYYY-MON-DD') FROM DUAL;
+SELECT TO_CHAR('30-O7-2024','YYYY-MON-DD') FROM DUAL
+               *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> SELECT TO_CHAR('30-MAY-24','YYYY-MON-DD') FROM DUAL;
+SELECT TO_CHAR('30-MAY-24','YYYY-MON-DD') FROM DUAL
+               *
+ERROR at line 1:
+ORA-01722: invalid number 
+
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'YYYY') = '1981';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+
+10 rows selected.
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'MON') = 'FEB';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                   
+
+SQL> 
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'MM') = 2;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                   
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'DY')='WED';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'DY')='TUE';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                                                                                                                   
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'DY')='WEDNESDAY';
+
+no rows selected
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'DAY') = 'TUESDAY';
+
+no rows selected
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'DAY') = 'MON';
+
+no rows selected
+
+SQL> SELECT TOCHAR(HIREDATE,'DY-DAY-MON-MM')FROM EMP;
+SELECT TOCHAR(HIREDATE,'DY-DAY-MON-MM')FROM EMP
+       *
+ERROR at line 1:
+ORA-00904: "TOCHAR": invalid identifier 
+
+
+SQL> SELECT TO_CHAR(HIREDATE,'DY-DAY-MON-MM')FROM EMP;
+
+TO_CHAR(HIREDATE,'DY                                                                                                                                                                                    
+--------------------                                                                                                                                                                                    
+WED-WEDNESDAY-DEC-12                                                                                                                                                                                    
+FRI-FRIDAY   -FEB-02                                                                                                                                                                                    
+SUN-SUNDAY   -FEB-02                                                                                                                                                                                    
+THU-THURSDAY -APR-04                                                                                                                                                                                    
+MON-MONDAY   -SEP-09                                                                                                                                                                                    
+FRI-FRIDAY   -MAY-05                                                                                                                                                                                    
+TUE-TUESDAY  -JUN-06                                                                                                                                                                                    
+SUN-SUNDAY   -APR-04                                                                                                                                                                                    
+TUE-TUESDAY  -NOV-11                                                                                                                                                                                    
+TUE-TUESDAY  -SEP-09                                                                                                                                                                                    
+SAT-SATURDAY -MAY-05                                                                                                                                                                                    
+THU-THURSDAY -DEC-12                                                                                                                                                                                    
+THU-THURSDAY -DEC-12                                                                                                                                                                                    
+SAT-SATURDAY -JAN-01                                                                                                                                                                                    
+
+14 rows selected.
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'DAY')='TUESDAY';
+
+no rows selected
+
+SQL> SELECT TO_CHAR(HIREDATE,DAY) FROM EMP;
+SELECT TO_CHAR(HIREDATE,DAY) FROM EMP
+                        *
+ERROR at line 1:
+ORA-00904: "DAY": invalid identifier 
+
+
+SQL> SELECT TO_CHAR(HIREDATE,'DAY')FROM DUAL;
+SELECT TO_CHAR(HIREDATE,'DAY')FROM DUAL
+               *
+ERROR at line 1:
+ORA-00904: "HIREDATE": invalid identifier 
+
+
+SQL> SELECT TO_CHAR(HIREDATE,'DAY') FROM EMP;
+
+TO_CHAR(H                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+WEDNESDAY                                                                                                                                                                                               
+FRIDAY                                                                                                                                                                                                  
+SUNDAY                                                                                                                                                                                                  
+THURSDAY                                                                                                                                                                                                
+MONDAY                                                                                                                                                                                                  
+FRIDAY                                                                                                                                                                                                  
+TUESDAY                                                                                                                                                                                                 
+SUNDAY                                                                                                                                                                                                  
+TUESDAY                                                                                                                                                                                                 
+TUESDAY                                                                                                                                                                                                 
+SATURDAY                                                                                                                                                                                                
+THURSDAY                                                                                                                                                                                                
+THURSDAY                                                                                                                                                                                                
+SATURDAY                                                                                                                                                                                                
+
+14 rows selected.
+
+SQL>  SELECT * FROM EMP
+  2   WHERE TO_CHAR(HIREDATE,'DAY')=TUESDAY;
+ WHERE TO_CHAR(HIREDATE,'DAY')=TUESDAY
+                               *
+ERROR at line 2:
+ORA-00904: "TUESDAY": invalid identifier 
+
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'DAY')= 'WEDNESDAY';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'DAY')= 'TUESDAY';
+
+no rows selected
+
+SQL> SELECT TO_CHAR(DATE '2002-DEC-09','DY') FROM DUAL;
+SELECT TO_CHAR(DATE '2002-DEC-09','DY') FROM DUAL
+                    *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> SELECT TO_CHAR(DATE '2002-12-9','DY')FROM DUAL;
+
+TO_                                                                                                                                                                                                     
+---                                                                                                                                                                                                     
+MON                                                                                                                                                                                                     
+
+SQL> SELECT TO_CHAR(TO_DATE('12-MAY-24'),'YY') FROM DUAL;
+
+TO                                                                                                                                                                                                      
+--                                                                                                                                                                                                      
+24                                                                                                                                                                                                      
+
+SQL> SELECT TO_CHAR(HIREDATE,'HH-MI')FROM EMP;
+
+TO_CH                                                                                                                                                                                                   
+-----                                                                                                                                                                                                   
+12-00                                                                                                                                                                                                   
+12-00                                                                                                                                                                                                   
+12-00                                                                                                                                                                                                   
+12-00                                                                                                                                                                                                   
+12-00                                                                                                                                                                                                   
+12-00                                                                                                                                                                                                   
+12-00                                                                                                                                                                                                   
+12-00                                                                                                                                                                                                   
+12-00                                                                                                                                                                                                   
+12-00                                                                                                                                                                                                   
+12-00                                                                                                                                                                                                   
+12-00                                                                                                                                                                                                   
+12-00                                                                                                                                                                                                   
+12-00                                                                                                                                                                                                   
+
+14 rows selected.
+
+SQL> SELECT TO_CHAR(CURRENT_DATE,'HH-MI-SS')FROM DUAL;
+
+TO_CHAR(                                                                                                                                                                                                
+--------                                                                                                                                                                                                
+11-09-39                                                                                                                                                                                                
+
+SQL> SELECT TO_CHAR(CURRENT_DATE,'HH-MI-SS')FROM DUAL;
+
+TO_CHAR(                                                                                                                                                                                                
+--------                                                                                                                                                                                                
+11-10-11                                                                                                                                                                                                
+
+SQL> SELECT MAX(SAL) FROM EMP;
+
+  MAX(SAL)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+      5000                                                                                                                                                                                              
+
+SQL> SELECT MAX(SAL) FROM EMP
+  2  WHERE JOB = 'SALESMAN';
+
+  MAX(SAL)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+      1600                                                                                                                                                                                              
+
+SQL> SELECT MIN(HIREDATE)FROM EMP;
+
+MIN(HIRED                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+17-DEC-80                                                                                                                                                                                               
+
+SQL> SELECT MAX(HIREDATE) FROM EMP;
+
+MAX(HIRED                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+23-MAY-87                                                                                                                                                                                               
+
+SQL> SELECT MIN(SAL) FROM EMP;
+
+  MIN(SAL)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+       800                                                                                                                                                                                              
+
+SQL> SELECT MIN(HIREDATE) FROM EMP;
+
+MIN(HIRED                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+17-DEC-80                                                                                                                                                                                               
+
+SQL> SELECT AVG(SAL),JOB
+  2  FROM EMP
+  3  GROUP BY JOB;
+
+  AVG(SAL) JOB                                                                                                                                                                                          
+---------- ---------                                                                                                                                                                                    
+    1037.5 CLERK                                                                                                                                                                                        
+      1400 SALESMAN                                                                                                                                                                                     
+      5000 PRESIDENT                                                                                                                                                                                    
+2758.33333 MANAGER                                                                                                                                                                                      
+      3000 ANALYST                                                                                                                                                                                      
+
+SQL> 
+SQL> SELECT AVG(SAL),JOB
+  2  FROM EMP
+  3  WHERE JOB='CLERK'
+  4  GROUP BY JOB;
+
+  AVG(SAL) JOB                                                                                                                                                                                          
+---------- ---------                                                                                                                                                                                    
+    1037.5 CLERK                                                                                                                                                                                        
+
+SQL> SELECT AVG(SAL) FROM EMP
+  2  WHERE JOB = 'CLERK';
+
+  AVG(SAL)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+    1037.5                                                                                                                                                                                              
+
+SQL> SELECT SUM(SAL),JOB
+  2  WHERE JOB = 'MANAGER'
+  3  
+SQL> SELECT SUM(SAL),JOB FROM EMP
+  2  WHERE JOB = 'MANAGER'
+  3  GROUP BY JOB
+  4  HAVING SUM(SAL)>3000;
+
+  SUM(SAL) JOB                                                                                                                                                                                          
+---------- ---------                                                                                                                                                                                    
+      8275 MANAGER                                                                                                                                                                                      
+
+SQL> SELECT COUNT(*) FROM EMP
+  2  WHERE COMM IS NOT NULL AND COMM != 0;
+
+  COUNT(*)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+         3                                                                                                                                                                                              
+
+SQL> SELECT COUNT(*) FROM EMP
+  2  WHERE COMM IS NULL OR COMM = 0;
+
+  COUNT(*)                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+        11                                                                                                                                                                                              
+
+SQL> SELECT EMP.*
+  2  FROM EMP,DEPT
+  3  WHERE DEPT.DNAME IN ('RESEARCH','SALES') AND DEPT.DEPTNO = EMP.DEPTNO;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+
+11 rows selected.
+
+SQL> SELECT SELECT * FROM EMP
+  2  WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT
+  3  WHERE DNAME IN('RESEARCH','SALES'));
+SELECT SELECT * FROM EMP
+       *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> SELECT * FROM EMP
+  2  WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT
+  3  WHERE DNAME IN('RESEARCH','SALES'));
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20                                                                                                                   
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                                                                                                                   
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+
+11 rows selected.
+
+SQL> SPOOL OFF

@@ -1,0 +1,108 @@
+SQL> DESC AUTHOR
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ AID                                                                                                               NOT NULL NUMBER(6)
+ ANAME                                                                                                             NOT NULL VARCHAR2(20)
+ AGE                                                                                                               NOT NULL NUMBER(2)
+ BOOKS_WRITTEN                                                                                                              NUMBER(38)
+ ADDRESS                                                                                                                    VARCHAR2(20)
+ MNO                                                                                                               NOT NULL NUMBER(10)
+ GENDER                                                                                                                     VARCHAR2(6)
+ EMAIL                                                                                                             NOT NULL VARCHAR2(20)
+
+SQL> INSERT INTO AUTHOR(000001,'RAGHAVENDRA',22,2,'VIZAG-AP',9848651522,MALE,'RAGHAV@123');
+INSERT INTO AUTHOR(000001,'RAGHAVENDRA',22,2,'VIZAG-AP',9848651522,MALE,'RAGHAV@123')
+                   *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> INSERT INTO AUTHOR VALUES(000001,'RAGHAVENDRA',22,2,'VIZAG-AP',9848651522,MALE,'RAGHAV@123');
+INSERT INTO AUTHOR VALUES(000001,'RAGHAVENDRA',22,2,'VIZAG-AP',9848651522,MALE,'RAGHAV@123')
+                                                                          *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> SELECT * FROM AUTHOR;
+
+no rows selected
+
+SQL> INSERT INTO AUTHOR VALUES(000001,'RAGHAVENDRA',22,2,'VIZAG-AP',9848651522,'MALE','RAGHAV@123');
+
+1 row created.
+
+SQL> SELECT * FROM AUTHOR;
+
+       AID ANAME                       AGE BOOKS_WRITTEN ADDRESS                     MNO GENDER EMAIL                                                                                                   
+---------- -------------------- ---------- ------------- -------------------- ---------- ------ --------------------                                                                                    
+         1 RAGHAVENDRA                  22             2 VIZAG-AP             9848651522 MALE   RAGHAV@123                                                                                              
+
+SQL> INSERT INTO AUTHOR VALUES(000002,'RADIANT',73,39,'HYD-TELANGANA',9988774455,'FEMALE','RADHA@123');
+
+1 row created.
+
+SQL> INSERT INTO AUTHOR(AID,GENDER,AGE,MNO,EMAIL,ANAME)
+  2  VALUES(000003,'MALE',50,6333663622,'JANAKI@123','JANAKI');
+
+1 row created.
+
+SQL> INSERT INTO AUTHOR(AID,GENDER,AGE,MNO,EMAIL,ANAME)
+  2  VALUES(000009,'MALE',33,6578578585,'VIJAYSAI@123','VIJAY')
+  3  VALUES(000005,'FEMALE',44,4555556444,'SAVITHRI@123','SAVI');
+VALUES(000005,'FEMALE',44,4555556444,'SAVITHRI@123','SAVI')
+*
+ERROR at line 3:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> INSERT INTO AUTHOR(AID,GENDER,AGE,MNO,EMAIL,ANAME)
+  2  VALUES(000009,'MALE',33,6578578585,'VIJAYSAI@123','VIJAY'),
+  3  VALUES(000005,'FEMALE',44,4555556444,'SAVITHRI@123','SAVI');
+VALUES(000009,'MALE',33,6578578585,'VIJAYSAI@123','VIJAY'),
+                                                          *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> INSERT INTO AUTHOR(AID,GENDER,AGE,MNO,EMAIL,ANAME)
+  2  VALUES(000009,'MALE',33,6578578585,'VIJAYSAI@123','VIJAY');
+
+1 row created.
+
+SQL> INSERT INTO AUTHOR(AID,GENDER,AGE,MNO,EMAIL,ANAME)
+  2  VALUES(000005,'FEMALE',44,4555556444,'SAVITHRI@123','SAVI');
+
+1 row created.
+
+SQL> SELECT * FROM AUTHOR:
+  2  
+SQL> 
+SQL> SELECT * FROM AUTHOR;
+
+       AID ANAME                       AGE BOOKS_WRITTEN ADDRESS                     MNO GENDER EMAIL                                                                                                   
+---------- -------------------- ---------- ------------- -------------------- ---------- ------ --------------------                                                                                    
+         1 RAGHAVENDRA                  22             2 VIZAG-AP             9848651522 MALE   RAGHAV@123                                                                                              
+         2 RADIANT                      73            39 HYD-TELANGANA        9988774455 FEMALE RADHA@123                                                                                               
+         3 JANAKI                       50             1                      6333663622 MALE   JANAKI@123                                                                                              
+         9 VIJAY                        33             1                      6578578585 MALE   VIJAYSAI@123                                                                                            
+         5 SAVI                         44             1                      4555556444 FEMALE SAVITHRI@123                                                                                            
+
+SQL> SELECT ANAME,AGE FROM AUTHOR
+  2  WHERE ADDRESS IS NULL;
+
+ANAME                       AGE                                                                                                                                                                         
+-------------------- ----------                                                                                                                                                                         
+JANAKI                       50                                                                                                                                                                         
+VIJAY                        33                                                                                                                                                                         
+SAVI                         44                                                                                                                                                                         
+
+SQL> SELECT * FROM AUTHOR
+  2  WHERE ADDRESS IS NOT NULL;
+
+       AID ANAME                       AGE BOOKS_WRITTEN ADDRESS                     MNO GENDER EMAIL                                                                                                   
+---------- -------------------- ---------- ------------- -------------------- ---------- ------ --------------------                                                                                    
+         1 RAGHAVENDRA                  22             2 VIZAG-AP             9848651522 MALE   RAGHAV@123                                                                                              
+         2 RADIANT                      73            39 HYD-TELANGANA        9988774455 FEMALE RADHA@123                                                                                               
+
+SQL> EXIT

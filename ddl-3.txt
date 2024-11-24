@@ -1,0 +1,195 @@
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+PRODUCT                        TABLE                                                                                                                                                                    
+CUSTOMER                       TABLE                                                                                                                                                                    
+PLAYER                         TABLE                                                                                                                                                                    
+CRICKET                        TABLE                                                                                                                                                                    
+AUTHOR                         TABLE                                                                                                                                                                    
+BOOK                           TABLE                                                                                                                                                                    
+DOCTOR                         TABLE                                                                                                                                                                    
+PATIENT                        TABLE                                                                                                                                                                    
+
+12 rows selected.
+
+SQL> drop table doctor;
+drop table doctor
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys 
+
+
+SQL> drop table patient;
+
+Table dropped.
+
+SQL> drop table doctor,book;
+drop table doctor,book
+                 *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> drop table doctor;
+
+Table dropped.
+
+SQL> drop table player;
+
+Table dropped.
+
+SQL> truncate table author;
+truncate table author
+               *
+ERROR at line 1:
+ORA-02266: unique/primary keys in table referenced by enabled foreign keys 
+
+
+SQL> truncate table book;
+
+Table truncated.
+
+SQL> truncate table author;
+truncate table author
+               *
+ERROR at line 1:
+ORA-02266: unique/primary keys in table referenced by enabled foreign keys 
+
+
+SQL> drop table book;
+
+Table dropped.
+
+SQL> truncate table author;
+
+Table truncated.
+
+SQL> rename table emp to employee;
+rename table emp to employee
+       *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> rename table dept to department;
+rename table dept to department
+       *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> rename table DEPT TO DEPARTMENT;
+rename table DEPT TO DEPARTMENT
+       *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+PRODUCT                        TABLE                                                                                                                                                                    
+CUSTOMER                       TABLE                                                                                                                                                                    
+CRICKET                        TABLE                                                                                                                                                                    
+AUTHOR                         TABLE                                                                                                                                                                    
+BIN$3+upvSC/RCmZ/cvyXAsLOQ==$0 TABLE                                                                                                                                                                    
+BIN$x5AX0r9iQVqatww6/ytFSw==$0 TABLE                                                                                                                                                                    
+BIN$o8IgF43LSherxNGdJJPlzg==$0 TABLE                                                                                                                                                                    
+BIN$k2F4VqXyS12kz/VZHUxJcQ==$0 TABLE                                                                                                                                                                    
+
+12 rows selected.
+
+SQL> RENAME AUTHOR TO PUBLISHER;
+
+Table renamed.
+
+SQL> RENAME TABLE PUBLISHER TO AUTHOR;
+RENAME TABLE PUBLISHER TO AUTHOR
+       *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> RENAME PUBLISHER TO AUTHOR;
+
+Table renamed.
+
+SQL> SHOW RECYCLEBIN;
+ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME                                                                                                                                  
+---------------- ------------------------------ ------------ -------------------                                                                                                                        
+BOOK             BIN$3+upvSC/RCmZ/cvyXAsLOQ==$0 TABLE        2024-07-24:23:05:35                                                                                                                        
+DOCTOR           BIN$x5AX0r9iQVqatww6/ytFSw==$0 TABLE        2024-07-24:23:03:14                                                                                                                        
+PATIENT          BIN$o8IgF43LSherxNGdJJPlzg==$0 TABLE        2024-07-24:23:02:32                                                                                                                        
+PLAYER           BIN$k2F4VqXyS12kz/VZHUxJcQ==$0 TABLE        2024-07-24:23:03:32                                                                                                                        
+SQL> FLASHBACK BOOK;
+FLASHBACK BOOK
+          *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> FLASHBACK TABLE BOOK TO BEFORE DROP;
+
+Flashback complete.
+
+SQL> FLASHBACK TABLE DOCTOR TO BEFORE DROP;
+
+Flashback complete.
+
+SQL> FLASHBACK RECYCLEBIN;
+FLASHBACK RECYCLEBIN
+          *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> FLASHBACK;
+FLASHBACK
+        *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> FLASHBACK ALL_TABLES TO BEFORE DROP;
+FLASHBACK ALL_TABLES TO BEFORE DROP
+          *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> SHOW RECYCLEBIN;
+ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME                                                                                                                                  
+---------------- ------------------------------ ------------ -------------------                                                                                                                        
+PATIENT          BIN$o8IgF43LSherxNGdJJPlzg==$0 TABLE        2024-07-24:23:02:32                                                                                                                        
+PLAYER           BIN$k2F4VqXyS12kz/VZHUxJcQ==$0 TABLE        2024-07-24:23:03:32                                                                                                                        
+SQL> FLASHBACK TABLE PATIENT TO BEFORE DROP;
+
+Flashback complete.
+
+SQL> FLASHBACK TABLE PLAYER TO BEFORE DROP;
+
+Flashback complete.
+
+SQL> SHOW RECYCLEBIN;
+SQL> PURGE RECYCLEBIN;
+
+Recyclebin purged.
+
+SQL> PURGE TABLE PLAYER;
+PURGE TABLE PLAYER
+*
+ERROR at line 1:
+ORA-38307: object not in RECYCLE BIN 
+
+
+SQL> SPOOL OFF

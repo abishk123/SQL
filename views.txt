@@ -1,0 +1,105 @@
+SQL> CREATE VIEW V1
+  2  AS
+  3  SELECT ENAME,JOB FROM EMP;
+CREATE VIEW V1
+            *
+ERROR at line 1:
+ORA-01031: insufficient privileges 
+
+
+SQL> CONN SYSTEM;
+Connected.
+SQL> GRANT CREATE VIEW TO SCOTT;
+
+Grant succeeded.
+
+SQL> CONN SCOTT;
+Connected.
+SQL> CREATE VIEW V1
+  2  AS
+  3  SELECT ENAME, JOB FROM EMP;
+
+View created.
+
+SQL> SELECT * FROM V1;
+
+ENAME      JOB                                                                                                                                                                                          
+---------- ---------                                                                                                                                                                                    
+SMITH      CLERK                                                                                                                                                                                        
+ALLEN      SALESMAN                                                                                                                                                                                     
+WARD       SALESMAN                                                                                                                                                                                     
+JONES      MANAGER                                                                                                                                                                                      
+MARTIN     SALESMAN                                                                                                                                                                                     
+BLAKE      MANAGER                                                                                                                                                                                      
+CLARK      MANAGER                                                                                                                                                                                      
+SCOTT      ANALYST                                                                                                                                                                                      
+KING       PRESIDENT                                                                                                                                                                                    
+TURNER     SALESMAN                                                                                                                                                                                     
+ADAMS      CLERK                                                                                                                                                                                        
+JAMES      CLERK                                                                                                                                                                                        
+FORD       ANALYST                                                                                                                                                                                      
+MILLER     CLERK                                                                                                                                                                                        
+
+14 rows selected.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+CUSTOMER                       TABLE                                                                                                                                                                    
+CRICKET                        TABLE                                                                                                                                                                    
+DOCTOR                         TABLE                                                                                                                                                                    
+BOOK                           TABLE                                                                                                                                                                    
+PATIENT                        TABLE                                                                                                                                                                    
+PLAYER                         TABLE                                                                                                                                                                    
+AUTHOR                         TABLE                                                                                                                                                                    
+PRODUCT                        TABLE                                                                                                                                                                    
+V1                             VIEW                                                                                                                                                                     
+
+13 rows selected.
+
+SQL> CREATE OR REPLACE VIEW V1
+  2  AS
+  3  SELECT ENAME,COMM,SAL FROM EMP;
+
+View created.
+
+SQL> SELECT * FROM V1;
+
+ENAME            COMM        SAL                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+SMITH                        800                                                                                                                                                                        
+ALLEN             300       1600                                                                                                                                                                        
+WARD              500       1250                                                                                                                                                                        
+JONES                       2975                                                                                                                                                                        
+MARTIN           1400       1250                                                                                                                                                                        
+BLAKE                       2850                                                                                                                                                                        
+CLARK                       2450                                                                                                                                                                        
+SCOTT                       3000                                                                                                                                                                        
+KING                        5000                                                                                                                                                                        
+TURNER              0       1500                                                                                                                                                                        
+ADAMS                       1100                                                                                                                                                                        
+JAMES                        950                                                                                                                                                                        
+FORD                        3000                                                                                                                                                                        
+MILLER                      1300                                                                                                                                                                        
+
+14 rows selected.
+
+SQL> DROP VIEW V1;
+
+View dropped.
+
+SQL> CONN SYSTEM;
+Connected.
+SQL> REVOKE CREATE VIEW TO SCOTT;
+REVOKE CREATE VIEW TO SCOTT
+                   *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> SPOOL OFF;

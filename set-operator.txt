@@ -1,0 +1,124 @@
+SQL> SELECT DEPTNO FROM DEPT
+  2  UNION
+  3  SELECT DEPTNO FROM EMP;
+
+    DEPTNO                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        40                                                                                                                                                                                              
+
+SQL> SELECT DEPTNO FROM DEPT
+  2  UNIONALL
+  3  SELECT DEPTNO FROM EMP;
+SELECT DEPTNO FROM EMP
+*
+ERROR at line 3:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT DEPTNO FROM DEPT
+  2  UNION ALL
+  3  SELECT DEPTNO FROM EMP;
+
+    DEPTNO                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        40                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+
+18 rows selected.
+
+SQL> SELECT DEPTNO FROM DEPT
+  2  INTERSECT
+  3  SELECT DEPTNO FROM EMP;
+
+    DEPTNO                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+
+SQL> SELECT DEPTNO FROM DEPT
+  2  MINUS
+  3  SELECT DEPTNO FROM EMP;
+
+    DEPTNO                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+        40                                                                                                                                                                                              
+
+SQL> SELECT DEPTNO FROM EMP
+  2  MINUS
+  3  SELECT DEPTNO FROM DEPT;
+
+no rows selected
+
+SQL> SELECT DEPTNO FROM EMP
+  2  UNION
+  3  SELECT DEPTNO FROM DEPT;
+
+    DEPTNO                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        40                                                                                                                                                                                              
+
+SQL> SELECT DEPTNO FROM EMP
+  2  UNION ALL
+  3  SELECT DEPTNO FROM DEPT;
+
+    DEPTNO                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+        40                                                                                                                                                                                              
+
+18 rows selected.
+
+SQL> SELECT DEPT FROM EMP
+  2  INTERSECT
+  3  
+SQL> 
+SQL> SELECT DEPTNO FROM EMP
+  2  INTERSECT
+  3  SELECT DEPTNO FROM DEPT;
+
+    DEPTNO                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+        10                                                                                                                                                                                              
+        20                                                                                                                                                                                              
+        30                                                                                                                                                                                              
+
+SQL> SPOOL OFF

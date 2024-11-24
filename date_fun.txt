@@ -1,0 +1,327 @@
+SQL> SELECT SESSIONTIMEZONE FROM DUAL;
+
+SESSIONTIMEZONE                                                                                                                                                                                         
+---------------------------------------------------------------------------                                                                                                                             
++05:30                                                                                                                                                                                                  
+
+SQL> SELECT SYSDATE FROM DUAL;
+
+SYSDATE                                                                                                                                                                                                 
+---------                                                                                                                                                                                               
+31-JUL-24                                                                                                                                                                                               
+
+SQL> SELECT CURRENT_DATE FROM DUAL;
+
+CURRENT_D                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+31-JUL-24                                                                                                                                                                                               
+
+SQL> SELECT MONTHS_BETWEEN('18-JUL-21','18-FEB-23') FROM DUAL;
+
+MONTHS_BETWEEN('18-JUL-21','18-FEB-23')                                                                                                                                                                 
+---------------------------------------                                                                                                                                                                 
+                                    -19                                                                                                                                                                 
+
+SQL> SELECT MONTHS_BETWEEN('21-05-21','20-02-20') FROM DUAL;
+SELECT MONTHS_BETWEEN('21-05-21','20-02-20') FROM DUAL
+                      *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> SELECT MONTHS_BETWEEN('21-FEB-20','28-FEB-16') FROM DUAL;
+
+MONTHS_BETWEEN('21-FEB-20','28-FEB-16')                                                                                                                                                                 
+---------------------------------------                                                                                                                                                                 
+                             47.7741935                                                                                                                                                                 
+
+SQL> SELECT MONTHS_BETWEEN('FEB','DEC') FROM DUAL;
+SELECT MONTHS_BETWEEN('FEB','DEC') FROM DUAL
+                      *
+ERROR at line 1:
+ORA-01858: a non-numeric character was found where a numeric was expected 
+
+
+SQL> SELECT NEXT_DAY('31-JUL-24','WEDNESDAY') FROM DUAL;
+
+NEXT_DAY(                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+07-AUG-24                                                                                                                                                                                               
+
+SQL> SELECT LAST_DAY('31-JUL-24','WEDNESDAY') FROM DUAL;
+SELECT LAST_DAY('31-JUL-24','WEDNESDAY') FROM DUAL
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> SELECT CURRENTTIMESTAMP FROM DUAL;
+SELECT CURRENTTIMESTAMP FROM DUAL
+       *
+ERROR at line 1:
+ORA-00904: "CURRENTTIMESTAMP": invalid identifier 
+
+
+SQL> SELECT CURRRENT_TIMESTAMP FROM DUAL;
+SELECT CURRRENT_TIMESTAMP FROM DUAL
+       *
+ERROR at line 1:
+ORA-00904: "CURRRENT_TIMESTAMP": invalid identifier 
+
+
+SQL> SELECT ADD_MONTHS('22-JUL-13',6) FROM DUAL;
+
+ADD_MONTH                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+22-JAN-14                                                                                                                                                                                               
+
+SQL> SELECT LAST_DAY('2-FEB-24') FROM DUAL;
+
+LAST_DAY(                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+29-FEB-24                                                                                                                                                                                               
+
+SQL> SELECT MONTHS_BETWEEN(CURRENT_DATE,HIREDATE) AS EXP, ENAME FROM EMP;
+
+       EXP ENAME                                                                                                                                                                                        
+---------- ----------                                                                                                                                                                                   
+523.478897 SMITH                                                                                                                                                                                        
+521.382123 ALLEN                                                                                                                                                                                        
+521.317607 WARD                                                                                                                                                                                         
+519.962768 JONES                                                                                                                                                                                        
+514.124058 MARTIN                                                                                                                                                                                       
+518.995026 BLAKE                                                                                                                                                                                        
+517.736962 CLARK                                                                                                                                                                                        
+447.414381 SCOTT                                                                                                                                                                                        
+512.478897 KING                                                                                                                                                                                         
+ 514.76922 TURNER                                                                                                                                                                                       
+446.285349 ADAMS                                                                                                                                                                                        
+ 511.93051 JAMES                                                                                                                                                                                        
+ 511.93051 FORD                                                                                                                                                                                         
+510.285349 MILLER                                                                                                                                                                                       
+
+14 rows selected.
+
+SQL> SELECT MONTHS_BETWEEN(CURRENT_DATE,HIREDATE)/12 AS EXP FROM EMP;
+
+       EXP                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+43.6232435                                                                                                                                                                                              
+43.4485123                                                                                                                                                                                              
+ 43.443136                                                                                                                                                                                              
+43.3302328                                                                                                                                                                                              
+42.8436736                                                                                                                                                                                              
+43.2495876                                                                                                                                                                                              
+43.1447489                                                                                                                                                                                              
+37.2845338                                                                                                                                                                                              
+42.7065768                                                                                                                                                                                              
+42.8974371                                                                                                                                                                                              
+37.1904478                                                                                                                                                                                              
+42.6608779                                                                                                                                                                                              
+42.6608779                                                                                                                                                                                              
+42.5237811                                                                                                                                                                                              
+
+14 rows selected.
+
+SQL> SELECT MONTHS_BETWEEN(CURRENT_DATE,HIREDATE)/12 AS EXP FROM EMP
+  2  WHERE JOB = 'CLERK';
+
+       EXP                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+43.6232443                                                                                                                                                                                              
+37.1904486                                                                                                                                                                                              
+42.6608787                                                                                                                                                                                              
+42.5237819                                                                                                                                                                                              
+
+SQL> SELECT MONTHS_BETWEEN('31-JUL-24',HIREDATE) AS EXP FROM EMP;
+
+       EXP                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+523.451613                                                                                                                                                                                              
+521.354839                                                                                                                                                                                              
+521.290323                                                                                                                                                                                              
+519.935484                                                                                                                                                                                              
+514.096774                                                                                                                                                                                              
+518.967742                                                                                                                                                                                              
+517.709677                                                                                                                                                                                              
+447.387097                                                                                                                                                                                              
+512.451613                                                                                                                                                                                              
+514.741935                                                                                                                                                                                              
+446.258065                                                                                                                                                                                              
+511.903226                                                                                                                                                                                              
+511.903226                                                                                                                                                                                              
+510.258065                                                                                                                                                                                              
+
+14 rows selected.
+
+SQL> SELECT MONTHS_BETWEEN('31-JUL-24',HIREDATE),ENAME FROM EMP;
+
+MONTHS_BETWEEN('31-JUL-24',HIREDATE) ENAME                                                                                                                                                              
+------------------------------------ ----------                                                                                                                                                         
+                          523.451613 SMITH                                                                                                                                                              
+                          521.354839 ALLEN                                                                                                                                                              
+                          521.290323 WARD                                                                                                                                                               
+                          519.935484 JONES                                                                                                                                                              
+                          514.096774 MARTIN                                                                                                                                                             
+                          518.967742 BLAKE                                                                                                                                                              
+                          517.709677 CLARK                                                                                                                                                              
+                          447.387097 SCOTT                                                                                                                                                              
+                          512.451613 KING                                                                                                                                                               
+                          514.741935 TURNER                                                                                                                                                             
+                          446.258065 ADAMS                                                                                                                                                              
+                          511.903226 JAMES                                                                                                                                                              
+                          511.903226 FORD                                                                                                                                                               
+                          510.258065 MILLER                                                                                                                                                             
+
+14 rows selected.
+
+SQL>  SELECT MONTHS_BETWEEN(CURRENT_DATE,HIREDATE) AS EXP, ENAME FROM EMP;
+
+       EXP ENAME                                                                                                                                                                                        
+---------- ----------                                                                                                                                                                                   
+523.478986 SMITH                                                                                                                                                                                        
+521.382212 ALLEN                                                                                                                                                                                        
+521.317696 WARD                                                                                                                                                                                         
+519.962857 JONES                                                                                                                                                                                        
+514.124148 MARTIN                                                                                                                                                                                       
+518.995115 BLAKE                                                                                                                                                                                        
+517.737051 CLARK                                                                                                                                                                                        
+ 447.41447 SCOTT                                                                                                                                                                                        
+512.478986 KING                                                                                                                                                                                         
+514.769309 TURNER                                                                                                                                                                                       
+446.285438 ADAMS                                                                                                                                                                                        
+511.930599 JAMES                                                                                                                                                                                        
+511.930599 FORD                                                                                                                                                                                         
+510.285438 MILLER                                                                                                                                                                                       
+
+14 rows selected.
+
+SQL> SELECT CURRENT_DATE FROM DUAL;
+
+CURRENT_D                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+31-JUL-24                                                                                                                                                                                               
+
+SQL> SELECT TO_DATE('12-24-JUL','DD-YY-MM') FROM DUAL;
+
+TO_DATE('                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+12-JUL-24                                                                                                                                                                                               
+
+SQL> SELECT TO DATE('3-03-12','DD-YY-MON') FROM DUAL;
+SELECT TO DATE('3-03-12','DD-YY-MON') FROM DUAL
+       *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> SELECT TO_DATE('3-03-12','DD-YY-MON') FROM DUAL;
+SELECT TO_DATE('3-03-12','DD-YY-MON') FROM DUAL
+               *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+SQL> SELECT TO_DATE('3-03-12','DD-YY-MM') FROM DUAL;
+
+TO_DATE('                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+03-DEC-03                                                                                                                                                                                               
+
+SQL> SELECT TO_CHAR(SYSDATE,'YYYY-MM-DD') FROM DUAL;
+
+TO_CHAR(SY                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+2024-07-31                                                                                                                                                                                              
+
+SQL> SELECT TO_CHAR(CURRENT_DATE,'MON-YY-DD')FROM DUAL;
+
+TO_CHAR(C                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+JUL-24-31                                                                                                                                                                                               
+
+SQL> SELECT TO_CHAR(CURRENT_DATE,DY) FROM DUAL;
+SELECT TO_CHAR(CURRENT_DATE,DY) FROM DUAL
+                            *
+ERROR at line 1:
+ORA-00904: "DY": invalid identifier 
+
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_DATE(HIREDATE,'YY') = 81;
+WHERE TO_DATE(HIREDATE,'YY') = 81
+                             *
+ERROR at line 2:
+ORA-00932: inconsistent datatypes: expected DATE got NUMBER 
+
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(1981,'YYYY');
+WHERE TO_CHAR(1981,'YYYY')
+                         *
+ERROR at line 2:
+ORA-00920: invalid relational operator 
+
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'YYYY') = 1981;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                                   
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                   
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20                                                                                                                   
+
+10 rows selected.
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'MON') = 'FEB';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                   
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'MM') = 2;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                   
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'MM') = 'FEB';
+
+no rows selected
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'MM') = 002;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                   
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'DAY') = 'WEDNESDAY';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'DY') = 'MON';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                                                                   
+
+SQL> SPOOL OFF

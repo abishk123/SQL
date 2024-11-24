@@ -1,0 +1,738 @@
+SQL> SELECT EMP.ENAME,DEPT.DNAME
+  2  FROM EMP CROSS JOIN DEPT
+  3  ;
+
+ENAME      DNAME                                                                                                                                                                                        
+---------- --------------                                                                                                                                                                               
+SMITH      ACCOUNTING                                                                                                                                                                                   
+ALLEN      ACCOUNTING                                                                                                                                                                                   
+WARD       ACCOUNTING                                                                                                                                                                                   
+JONES      ACCOUNTING                                                                                                                                                                                   
+MARTIN     ACCOUNTING                                                                                                                                                                                   
+BLAKE      ACCOUNTING                                                                                                                                                                                   
+CLARK      ACCOUNTING                                                                                                                                                                                   
+SCOTT      ACCOUNTING                                                                                                                                                                                   
+KING       ACCOUNTING                                                                                                                                                                                   
+TURNER     ACCOUNTING                                                                                                                                                                                   
+ADAMS      ACCOUNTING                                                                                                                                                                                   
+JAMES      ACCOUNTING                                                                                                                                                                                   
+FORD       ACCOUNTING                                                                                                                                                                                   
+MILLER     ACCOUNTING                                                                                                                                                                                   
+SMITH      RESEARCH                                                                                                                                                                                     
+ALLEN      RESEARCH                                                                                                                                                                                     
+WARD       RESEARCH                                                                                                                                                                                     
+JONES      RESEARCH                                                                                                                                                                                     
+MARTIN     RESEARCH                                                                                                                                                                                     
+BLAKE      RESEARCH                                                                                                                                                                                     
+CLARK      RESEARCH                                                                                                                                                                                     
+SCOTT      RESEARCH                                                                                                                                                                                     
+KING       RESEARCH                                                                                                                                                                                     
+TURNER     RESEARCH                                                                                                                                                                                     
+ADAMS      RESEARCH                                                                                                                                                                                     
+JAMES      RESEARCH                                                                                                                                                                                     
+FORD       RESEARCH                                                                                                                                                                                     
+MILLER     RESEARCH                                                                                                                                                                                     
+SMITH      SALES                                                                                                                                                                                        
+ALLEN      SALES                                                                                                                                                                                        
+WARD       SALES                                                                                                                                                                                        
+JONES      SALES                                                                                                                                                                                        
+MARTIN     SALES                                                                                                                                                                                        
+BLAKE      SALES                                                                                                                                                                                        
+CLARK      SALES                                                                                                                                                                                        
+SCOTT      SALES                                                                                                                                                                                        
+KING       SALES                                                                                                                                                                                        
+TURNER     SALES                                                                                                                                                                                        
+ADAMS      SALES                                                                                                                                                                                        
+JAMES      SALES                                                                                                                                                                                        
+FORD       SALES                                                                                                                                                                                        
+MILLER     SALES                                                                                                                                                                                        
+SMITH      OPERATIONS                                                                                                                                                                                   
+ALLEN      OPERATIONS                                                                                                                                                                                   
+WARD       OPERATIONS                                                                                                                                                                                   
+JONES      OPERATIONS                                                                                                                                                                                   
+MARTIN     OPERATIONS                                                                                                                                                                                   
+BLAKE      OPERATIONS                                                                                                                                                                                   
+CLARK      OPERATIONS                                                                                                                                                                                   
+SCOTT      OPERATIONS                                                                                                                                                                                   
+KING       OPERATIONS                                                                                                                                                                                   
+TURNER     OPERATIONS                                                                                                                                                                                   
+ADAMS      OPERATIONS                                                                                                                                                                                   
+JAMES      OPERATIONS                                                                                                                                                                                   
+FORD       OPERATIONS                                                                                                                                                                                   
+MILLER     OPERATIONS                                                                                                                                                                                   
+
+56 rows selected.
+
+SQL> SELECT E.ENAME,D.LOC,D.DNAME,E.EMPNO
+  2  FROM EMP E CROSS JOIN DEPT D;
+
+ENAME      LOC           DNAME               EMPNO                                                                                                                                                      
+---------- ------------- -------------- ----------                                                                                                                                                      
+SMITH      NEW YORK      ACCOUNTING           7369                                                                                                                                                      
+ALLEN      NEW YORK      ACCOUNTING           7499                                                                                                                                                      
+WARD       NEW YORK      ACCOUNTING           7521                                                                                                                                                      
+JONES      NEW YORK      ACCOUNTING           7566                                                                                                                                                      
+MARTIN     NEW YORK      ACCOUNTING           7654                                                                                                                                                      
+BLAKE      NEW YORK      ACCOUNTING           7698                                                                                                                                                      
+CLARK      NEW YORK      ACCOUNTING           7782                                                                                                                                                      
+SCOTT      NEW YORK      ACCOUNTING           7788                                                                                                                                                      
+KING       NEW YORK      ACCOUNTING           7839                                                                                                                                                      
+TURNER     NEW YORK      ACCOUNTING           7844                                                                                                                                                      
+ADAMS      NEW YORK      ACCOUNTING           7876                                                                                                                                                      
+JAMES      NEW YORK      ACCOUNTING           7900                                                                                                                                                      
+FORD       NEW YORK      ACCOUNTING           7902                                                                                                                                                      
+MILLER     NEW YORK      ACCOUNTING           7934                                                                                                                                                      
+SMITH      DALLAS        RESEARCH             7369                                                                                                                                                      
+ALLEN      DALLAS        RESEARCH             7499                                                                                                                                                      
+WARD       DALLAS        RESEARCH             7521                                                                                                                                                      
+JONES      DALLAS        RESEARCH             7566                                                                                                                                                      
+MARTIN     DALLAS        RESEARCH             7654                                                                                                                                                      
+BLAKE      DALLAS        RESEARCH             7698                                                                                                                                                      
+CLARK      DALLAS        RESEARCH             7782                                                                                                                                                      
+SCOTT      DALLAS        RESEARCH             7788                                                                                                                                                      
+KING       DALLAS        RESEARCH             7839                                                                                                                                                      
+TURNER     DALLAS        RESEARCH             7844                                                                                                                                                      
+ADAMS      DALLAS        RESEARCH             7876                                                                                                                                                      
+JAMES      DALLAS        RESEARCH             7900                                                                                                                                                      
+FORD       DALLAS        RESEARCH             7902                                                                                                                                                      
+MILLER     DALLAS        RESEARCH             7934                                                                                                                                                      
+SMITH      CHICAGO       SALES                7369                                                                                                                                                      
+ALLEN      CHICAGO       SALES                7499                                                                                                                                                      
+WARD       CHICAGO       SALES                7521                                                                                                                                                      
+JONES      CHICAGO       SALES                7566                                                                                                                                                      
+MARTIN     CHICAGO       SALES                7654                                                                                                                                                      
+BLAKE      CHICAGO       SALES                7698                                                                                                                                                      
+CLARK      CHICAGO       SALES                7782                                                                                                                                                      
+SCOTT      CHICAGO       SALES                7788                                                                                                                                                      
+KING       CHICAGO       SALES                7839                                                                                                                                                      
+TURNER     CHICAGO       SALES                7844                                                                                                                                                      
+ADAMS      CHICAGO       SALES                7876                                                                                                                                                      
+JAMES      CHICAGO       SALES                7900                                                                                                                                                      
+FORD       CHICAGO       SALES                7902                                                                                                                                                      
+MILLER     CHICAGO       SALES                7934                                                                                                                                                      
+SMITH      BOSTON        OPERATIONS           7369                                                                                                                                                      
+ALLEN      BOSTON        OPERATIONS           7499                                                                                                                                                      
+WARD       BOSTON        OPERATIONS           7521                                                                                                                                                      
+JONES      BOSTON        OPERATIONS           7566                                                                                                                                                      
+MARTIN     BOSTON        OPERATIONS           7654                                                                                                                                                      
+BLAKE      BOSTON        OPERATIONS           7698                                                                                                                                                      
+CLARK      BOSTON        OPERATIONS           7782                                                                                                                                                      
+SCOTT      BOSTON        OPERATIONS           7788                                                                                                                                                      
+KING       BOSTON        OPERATIONS           7839                                                                                                                                                      
+TURNER     BOSTON        OPERATIONS           7844                                                                                                                                                      
+ADAMS      BOSTON        OPERATIONS           7876                                                                                                                                                      
+JAMES      BOSTON        OPERATIONS           7900                                                                                                                                                      
+FORD       BOSTON        OPERATIONS           7902                                                                                                                                                      
+MILLER     BOSTON        OPERATIONS           7934                                                                                                                                                      
+
+56 rows selected.
+
+SQL> SELECT E.SAL,D.DNAME
+  2  FROM EMP E CROSS JOIN DEPT D;
+
+       SAL DNAME                                                                                                                                                                                        
+---------- --------------                                                                                                                                                                               
+       800 ACCOUNTING                                                                                                                                                                                   
+      1600 ACCOUNTING                                                                                                                                                                                   
+      1250 ACCOUNTING                                                                                                                                                                                   
+      2975 ACCOUNTING                                                                                                                                                                                   
+      1250 ACCOUNTING                                                                                                                                                                                   
+      2850 ACCOUNTING                                                                                                                                                                                   
+      2450 ACCOUNTING                                                                                                                                                                                   
+      3000 ACCOUNTING                                                                                                                                                                                   
+      5000 ACCOUNTING                                                                                                                                                                                   
+      1500 ACCOUNTING                                                                                                                                                                                   
+      1100 ACCOUNTING                                                                                                                                                                                   
+       950 ACCOUNTING                                                                                                                                                                                   
+      3000 ACCOUNTING                                                                                                                                                                                   
+      1300 ACCOUNTING                                                                                                                                                                                   
+       800 RESEARCH                                                                                                                                                                                     
+      1600 RESEARCH                                                                                                                                                                                     
+      1250 RESEARCH                                                                                                                                                                                     
+      2975 RESEARCH                                                                                                                                                                                     
+      1250 RESEARCH                                                                                                                                                                                     
+      2850 RESEARCH                                                                                                                                                                                     
+      2450 RESEARCH                                                                                                                                                                                     
+      3000 RESEARCH                                                                                                                                                                                     
+      5000 RESEARCH                                                                                                                                                                                     
+      1500 RESEARCH                                                                                                                                                                                     
+      1100 RESEARCH                                                                                                                                                                                     
+       950 RESEARCH                                                                                                                                                                                     
+      3000 RESEARCH                                                                                                                                                                                     
+      1300 RESEARCH                                                                                                                                                                                     
+       800 SALES                                                                                                                                                                                        
+      1600 SALES                                                                                                                                                                                        
+      1250 SALES                                                                                                                                                                                        
+      2975 SALES                                                                                                                                                                                        
+      1250 SALES                                                                                                                                                                                        
+      2850 SALES                                                                                                                                                                                        
+      2450 SALES                                                                                                                                                                                        
+      3000 SALES                                                                                                                                                                                        
+      5000 SALES                                                                                                                                                                                        
+      1500 SALES                                                                                                                                                                                        
+      1100 SALES                                                                                                                                                                                        
+       950 SALES                                                                                                                                                                                        
+      3000 SALES                                                                                                                                                                                        
+      1300 SALES                                                                                                                                                                                        
+       800 OPERATIONS                                                                                                                                                                                   
+      1600 OPERATIONS                                                                                                                                                                                   
+      1250 OPERATIONS                                                                                                                                                                                   
+      2975 OPERATIONS                                                                                                                                                                                   
+      1250 OPERATIONS                                                                                                                                                                                   
+      2850 OPERATIONS                                                                                                                                                                                   
+      2450 OPERATIONS                                                                                                                                                                                   
+      3000 OPERATIONS                                                                                                                                                                                   
+      5000 OPERATIONS                                                                                                                                                                                   
+      1500 OPERATIONS                                                                                                                                                                                   
+      1100 OPERATIONS                                                                                                                                                                                   
+       950 OPERATIONS                                                                                                                                                                                   
+      3000 OPERATIONS                                                                                                                                                                                   
+      1300 OPERATIONS                                                                                                                                                                                   
+
+56 rows selected.
+
+SQL> SELECT E.SAL,D.DNAME
+  2  FROM EMP E CROSS JOIN DEPT D
+  3  WHERE E.ENAME = 'SMITH';
+
+       SAL DNAME                                                                                                                                                                                        
+---------- --------------                                                                                                                                                                               
+       800 ACCOUNTING                                                                                                                                                                                   
+       800 RESEARCH                                                                                                                                                                                     
+       800 SALES                                                                                                                                                                                        
+       800 OPERATIONS                                                                                                                                                                                   
+
+SQL>  SELECT E.SAL,D.DNAME
+  2   FROM EMP E CROSS JOIN DEPT D
+  3   WHERE ENAME = 'SMITH';
+
+       SAL DNAME                                                                                                                                                                                        
+---------- --------------                                                                                                                                                                               
+       800 ACCOUNTING                                                                                                                                                                                   
+       800 RESEARCH                                                                                                                                                                                     
+       800 SALES                                                                                                                                                                                        
+       800 OPERATIONS                                                                                                                                                                                   
+
+SQL> SELECT E.*,SELECT D.*
+  2  FROM EMP E CROSS JOIN DEPT D
+  3  WHERE INSTR(E.ENAME,'S')>0;
+SELECT E.*,SELECT D.*
+           *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+SQL> SELECT E.*,D.*
+  2  FROM EMP E CROSS JOIN DEPT D
+  3  WHERE INSTR(E.ENAME,'S')>0;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO     DEPTNO DNAME          LOC                                                                                     
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- -------------- -------------                                                                           
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         10 ACCOUNTING     NEW YORK                                                                                
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         20 RESEARCH       DALLAS                                                                                  
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         30 SALES          CHICAGO                                                                                 
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         40 OPERATIONS     BOSTON                                                                                  
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         10 ACCOUNTING     NEW YORK                                                                                
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         20 RESEARCH       DALLAS                                                                                  
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         30 SALES          CHICAGO                                                                                 
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         40 OPERATIONS     BOSTON                                                                                  
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         10 ACCOUNTING     NEW YORK                                                                                
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         20 RESEARCH       DALLAS                                                                                  
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         30 SALES          CHICAGO                                                                                 
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         40 OPERATIONS     BOSTON                                                                                  
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         10 ACCOUNTING     NEW YORK                                                                                
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         20 RESEARCH       DALLAS                                                                                  
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         30 SALES          CHICAGO                                                                                 
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         40 OPERATIONS     BOSTON                                                                                  
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         10 ACCOUNTING     NEW YORK                                                                                
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         20 RESEARCH       DALLAS                                                                                  
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         30 SALES          CHICAGO                                                                                 
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         40 OPERATIONS     BOSTON                                                                                  
+
+20 rows selected.
+
+SQL> SELECT E.*,D.*
+  2  FROM EMP E CROSS JOIN DEPT D
+  3  
+SQL> SELECT E.*,D.*
+  2  FROM EMP E,DEPT D
+  3  WHERE INSTR(ENAME,'S
+  4  ')>0;
+
+no rows selected
+
+SQL>  SELECT E.*,D.*
+  2   FROM EMP E,DEPT D
+  3  WHERE INSTR(E.ENAME,'S')>0;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO     DEPTNO DNAME          LOC                                                                                     
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- -------------- -------------                                                                           
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         10 ACCOUNTING     NEW YORK                                                                                
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         20 RESEARCH       DALLAS                                                                                  
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         30 SALES          CHICAGO                                                                                 
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         40 OPERATIONS     BOSTON                                                                                  
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         10 ACCOUNTING     NEW YORK                                                                                
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         20 RESEARCH       DALLAS                                                                                  
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         30 SALES          CHICAGO                                                                                 
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         40 OPERATIONS     BOSTON                                                                                  
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         10 ACCOUNTING     NEW YORK                                                                                
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         20 RESEARCH       DALLAS                                                                                  
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         30 SALES          CHICAGO                                                                                 
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         40 OPERATIONS     BOSTON                                                                                  
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         10 ACCOUNTING     NEW YORK                                                                                
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         20 RESEARCH       DALLAS                                                                                  
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         30 SALES          CHICAGO                                                                                 
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         40 OPERATIONS     BOSTON                                                                                  
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         10 ACCOUNTING     NEW YORK                                                                                
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         20 RESEARCH       DALLAS                                                                                  
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         30 SALES          CHICAGO                                                                                 
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         40 OPERATIONS     BOSTON                                                                                  
+
+20 rows selected.
+
+SQL> SELECT D.LOC,E.*
+  2  FROM DEPT D,EMP E
+  3  WHERE SAL>3000;
+
+LOC                EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                     
+------------- ---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                     
+NEW YORK            7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                     
+DALLAS              7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                     
+CHICAGO             7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                     
+BOSTON              7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                     
+
+SQL> SELECT D.LOC,E.*
+  2  FROM DEPT D EQUI JOIN EMP E
+  3  WHERE SAL > 3000;
+FROM DEPT D EQUI JOIN EMP E
+            *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT D.LOC,E.*
+  2  FROM DEPT D EQUI JOIN EMP E
+  3  WHERE SAL > 3000 AND D.DEPTNO = E.DEPTNO;
+FROM DEPT D EQUI JOIN EMP E
+            *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> 
+SQL> SELECT D.LOC,E.*
+  2  FROM DEPT D,EMP E
+  3  WHERE SAL > 3000 AND D.DEPTNO = E.DEPTNO;
+
+LOC                EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                     
+------------- ---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                     
+NEW YORK            7839 KING       PRESIDENT            17-NOV-81       5000                    10                                                                                                     
+
+SQL> SELECT E.ENAME,D.DNAME
+  2  FROM DEPT D,EMP E
+  3  WHERE E.DEPTNO = D.DEPTNO;
+
+ENAME      DNAME                                                                                                                                                                                        
+---------- --------------                                                                                                                                                                               
+SMITH      RESEARCH                                                                                                                                                                                     
+ALLEN      SALES                                                                                                                                                                                        
+WARD       SALES                                                                                                                                                                                        
+JONES      RESEARCH                                                                                                                                                                                     
+MARTIN     SALES                                                                                                                                                                                        
+BLAKE      SALES                                                                                                                                                                                        
+CLARK      ACCOUNTING                                                                                                                                                                                   
+SCOTT      RESEARCH                                                                                                                                                                                     
+KING       ACCOUNTING                                                                                                                                                                                   
+TURNER     SALES                                                                                                                                                                                        
+ADAMS      RESEARCH                                                                                                                                                                                     
+JAMES      SALES                                                                                                                                                                                        
+FORD       RESEARCH                                                                                                                                                                                     
+MILLER     ACCOUNTING                                                                                                                                                                                   
+
+14 rows selected.
+
+SQL> SELECT E.SAL*12,E.COMM/2,D.DNAME
+  2  FROM EMP E,DEPT D
+  3  WHERE E.DEPTNO = D.DEPTNO;
+
+  E.SAL*12   E.COMM/2 DNAME                                                                                                                                                                             
+---------- ---------- --------------                                                                                                                                                                    
+      9600            RESEARCH                                                                                                                                                                          
+     19200        150 SALES                                                                                                                                                                             
+     15000        250 SALES                                                                                                                                                                             
+     35700            RESEARCH                                                                                                                                                                          
+     15000        700 SALES                                                                                                                                                                             
+     34200            SALES                                                                                                                                                                             
+     29400            ACCOUNTING                                                                                                                                                                        
+     36000            RESEARCH                                                                                                                                                                          
+     60000            ACCOUNTING                                                                                                                                                                        
+     18000          0 SALES                                                                                                                                                                             
+     13200            RESEARCH                                                                                                                                                                          
+     11400            SALES                                                                                                                                                                             
+     36000            RESEARCH                                                                                                                                                                          
+     15600            ACCOUNTING                                                                                                                                                                        
+
+14 rows selected.
+
+SQL> SELECT E.*,D.*
+  2  FROM EMP E,DEPT D
+  3  WHERE E.DEPTNO = D.DEPTNO;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO     DEPTNO DNAME          LOC                                                                                     
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- -------------- -------------                                                                           
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         20 RESEARCH       DALLAS                                                                                  
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30         30 SALES          CHICAGO                                                                                 
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30         30 SALES          CHICAGO                                                                                 
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         20 RESEARCH       DALLAS                                                                                  
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30         30 SALES          CHICAGO                                                                                 
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30         30 SALES          CHICAGO                                                                                 
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10         10 ACCOUNTING     NEW YORK                                                                                
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         20 RESEARCH       DALLAS                                                                                  
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10         10 ACCOUNTING     NEW YORK                                                                                
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30         30 SALES          CHICAGO                                                                                 
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         20 RESEARCH       DALLAS                                                                                  
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         30 SALES          CHICAGO                                                                                 
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20         20 RESEARCH       DALLAS                                                                                  
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10         10 ACCOUNTING     NEW YORK                                                                                
+
+14 rows selected.
+
+SQL> SELECT E.*,D.*
+  2  FROM EMP E,DEPT D
+  3  WHERE TO_CHAR(HIREDATE,'YYYY')='1981' AND E.DEPTNO = D.DEPTNO;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO     DEPTNO DNAME          LOC                                                                                     
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- -------------- -------------                                                                           
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30         30 SALES          CHICAGO                                                                                 
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30         30 SALES          CHICAGO                                                                                 
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         20 RESEARCH       DALLAS                                                                                  
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30         30 SALES          CHICAGO                                                                                 
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30         30 SALES          CHICAGO                                                                                 
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10         10 ACCOUNTING     NEW YORK                                                                                
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10         10 ACCOUNTING     NEW YORK                                                                                
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30         30 SALES          CHICAGO                                                                                 
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         30 SALES          CHICAGO                                                                                 
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20         20 RESEARCH       DALLAS                                                                                  
+
+10 rows selected.
+
+SQL> SELECT E.EMPNO,E.ENAME,D.DEPTNO
+  2  FROM EMP E INNER JOIN DEPT D
+  3  ON E.DEPTNO = D.DEPTNO;
+
+     EMPNO ENAME          DEPTNO                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+      7369 SMITH              20                                                                                                                                                                        
+      7499 ALLEN              30                                                                                                                                                                        
+      7521 WARD               30                                                                                                                                                                        
+      7566 JONES              20                                                                                                                                                                        
+      7654 MARTIN             30                                                                                                                                                                        
+      7698 BLAKE              30                                                                                                                                                                        
+      7782 CLARK              10                                                                                                                                                                        
+      7788 SCOTT              20                                                                                                                                                                        
+      7839 KING               10                                                                                                                                                                        
+      7844 TURNER             30                                                                                                                                                                        
+      7876 ADAMS              20                                                                                                                                                                        
+      7900 JAMES              30                                                                                                                                                                        
+      7902 FORD               20                                                                                                                                                                        
+      7934 MILLER             10                                                                                                                                                                        
+
+14 rows selected.
+
+SQL> SELECT E.EMPNO,E.ENAME,D.DEPTNO
+  2  FROM EMP E INNER JOIN DEPT D
+  3  ON (E.SAL BETWEEN 1000 AND 3000) AND (E.COMM IS NULL OR COMM=O) AND D.DEPTNO= E.DEPTNO;
+ON (E.SAL BETWEEN 1000 AND 3000) AND (E.COMM IS NULL OR COMM=O) AND D.DEPTNO= E.DEPTNO
+                                                             *
+ERROR at line 3:
+ORA-00904: "O": invalid identifier 
+
+
+SQL> SELECT E.EMPNO,E.ENAME,D.DEPTNO
+  2  FROM EMP E INNER JOIN DEPT D
+  3  ON (E.SAL BETWEEN 1000 AND 3000) AND (E.COMM IS NULL OR COMM = 0 ) AND D.DEPTNO= E.DEPTNO;
+
+     EMPNO ENAME          DEPTNO                                                                                                                                                                        
+---------- ---------- ----------                                                                                                                                                                        
+      7566 JONES              20                                                                                                                                                                        
+      7698 BLAKE              30                                                                                                                                                                        
+      7782 CLARK              10                                                                                                                                                                        
+      7788 SCOTT              20                                                                                                                                                                        
+      7844 TURNER             30                                                                                                                                                                        
+      7876 ADAMS              20                                                                                                                                                                        
+      7902 FORD               20                                                                                                                                                                        
+      7934 MILLER             10                                                                                                                                                                        
+
+8 rows selected.
+
+SQL> SELECT A.ANAME,B.NAME
+  2  FROM AUTHOR A INNER JOIN BOOK B
+  3  ;
+
+*
+ERROR at line 3:
+ORA-00905: missing keyword 
+
+
+SQL> DESC BOOK
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ NAME                                                                                                              NOT NULL VARCHAR2(20)
+ BID                                                                                                               NOT NULL NUMBER(5)
+ PUBLISHEDON                                                                                                                DATE
+ AID                                                                                                                        NUMBER(6)
+ NOOFPAGES                                                                                                                  NUMBER(3)
+
+SQL> DESC AUTHOR
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ AID                                                                                                               NOT NULL NUMBER(6)
+ ANAME                                                                                                             NOT NULL VARCHAR2(20)
+ AGE                                                                                                               NOT NULL NUMBER(2)
+ BOOKS_WRITTEN                                                                                                              NUMBER(38)
+ ADDRESS                                                                                                                    VARCHAR2(20)
+ MNO                                                                                                               NOT NULL NUMBER(10)
+ GENDER                                                                                                                     VARCHAR2(6)
+ EMAIL                                                                                                             NOT NULL VARCHAR2(20)
+ NOOFAWARDS                                                                                                                 NUMBER(2)
+
+SQL> SELECT A.ANAME,B.NAME
+  2  FROM AUTHOR A INNER JOIN BOOK B
+  3  ON A.AID=B.AID;
+
+ANAME                NAME                                                                                                                                                                               
+-------------------- --------------------                                                                                                                                                               
+PENCIL PARTHU        GOOD DEEDS                                                                                                                                                                         
+JANAKI               FIFTY SHADES OF GREY                                                                                                                                                               
+RAGHAVENDRA          THE BATMAN                                                                                                                                                                         
+SAVI                 SHAWSHANK REDEMPTION                                                                                                                                                               
+RADIANT              PRISON BREAK                                                                                                                                                                       
+PENCIL PARTHU        READER                                                                                                                                                                             
+TAGHORE              KALKI2084AD                                                                                                                                                                        
+RANGANATHAM          NEEDS TO LIVE                                                                                                                                                                      
+
+8 rows selected.
+
+SQL> SELECT A.ANAME,B.NAME
+  2  FROM AUTHOR A INNER JOIN BOOK B
+  3  ON
+  4  INSERT INTO AUTHOR(DOB DATE);
+INSERT INTO AUTHOR(DOB DATE)
+*
+ERROR at line 4:
+ORA-00936: missing expression 
+
+
+SQL> INSERT INTO AUTHOR('DOB' DATE);
+INSERT INTO AUTHOR('DOB' DATE)
+                   *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> ALTER TABLE AUTHOR
+  2  ADD COLUMN(DOB DATE);
+ADD COLUMN(DOB DATE)
+    *
+ERROR at line 2:
+ORA-00904: : invalid identifier 
+
+
+SQL> ALTER TABLE AUTHOR
+  2  ADD COLUMN(DOB DATE);
+ADD COLUMN(DOB DATE)
+    *
+ERROR at line 2:
+ORA-00904: : invalid identifier 
+
+
+SQL> ALTER TABLE AUTHOR
+  2  ADD DOB DATE;
+
+Table altered.
+
+SQL> DESC PRODUCT;
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ PID                                                                                                               NOT NULL NUMBER(5)
+ PNAME                                                                                                             NOT NULL VARCHAR2(15)
+ PRICE                                                                                                             NOT NULL NUMBER(5)
+ ID                                                                                                                         NUMBER(5)
+ MFD                                                                                                                        DATE
+
+SQL> DESC CUSTOMER
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ CID                                                                                                               NOT NULL NUMBER(5)
+ CNAME                                                                                                             NOT NULL VARCHAR2(15)
+ AGE                                                                                                               NOT NULL NUMBER(2)
+ ADDRESS                                                                                                                    VARCHAR2(20)
+
+SQL> SELECT P.*,C.*,P.PID
+  2  FROM PRODUCT P INNER JOIN CUSTOMER C
+  3  ON (P.PRICE BETWEEN 500 AND 1000) AND (TO_CHAR(P.MFD,'MON')='AUG')AND P.ID=C.CID;
+
+no rows selected
+
+SQL> SELECT P.*,C.*,P.PID
+  2  FROM PRODUCT P INNER JOIN CUSTOMER C
+  3  ON (P.PRICE BETWEEN 500 AND 1000) AND P.ID=C.CID;
+
+       PID PNAME                PRICE         ID MFD              CID CNAME                  AGE ADDRESS                     PID                                                                        
+---------- --------------- ---------- ---------- --------- ---------- --------------- ---------- -------------------- ----------                                                                        
+       112 SHIRT                  599        321 24-JAN-23        321 MEHTA                   52 ANANTAPUR                   112                                                                        
+
+SQL> SELECT MFD FROM PRODUCT;
+
+MFD                                                                                                                                                                                                     
+---------                                                                                                                                                                                               
+24-JAN-23                                                                                                                                                                                               
+02-JAN-24                                                                                                                                                                                               
+23-MAR-23                                                                                                                                                                                               
+28-FEB-24                                                                                                                                                                                               
+                                                                                                                                                                                                        
+05-MAY-24                                                                                                                                                                                               
+
+6 rows selected.
+
+SQL> SELECT E1.*
+  2  FROM EMP E1 SELF JOIN EMP E2
+  3  WHERE E2.ENAME = 'MARTIN' AND E1.SAL = E2.SAL;
+FROM EMP E1 SELF JOIN EMP E2
+            *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL>  SELECT E1.*
+  2   FROM EMP E1,EMP E2
+  3  WHERE E2.ENAME = 'MARTIN' AND E1.SAL = E2.SAL;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                   
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                                                                   
+
+SQL> SELECT E1.*
+  2  FROM EMP E1,EMP E2
+  3  WHERE E2.ENAME = 'JONES' AND E2.JOB = E1.JOB;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                   
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10                                                                                                                   
+
+SQL> SELECT E1.ENAME,E2.ENAME
+  2  FROM EMP E1,EMP E2
+  3  WHERE E2.ENAME = E1.MGR ;
+WHERE E2.ENAME = E1.MGR 
+      *
+ERROR at line 3:
+ORA-01722: invalid number 
+
+
+SQL> SELECT E1.ENAME,E2.ENAME
+  2  FROM EMP E1,EMP E2
+  3  WHERE E2.EMPNO = E1.MGR;
+
+ENAME      ENAME                                                                                                                                                                                        
+---------- ----------                                                                                                                                                                                   
+SMITH      FORD                                                                                                                                                                                         
+ALLEN      BLAKE                                                                                                                                                                                        
+WARD       BLAKE                                                                                                                                                                                        
+JONES      KING                                                                                                                                                                                         
+MARTIN     BLAKE                                                                                                                                                                                        
+BLAKE      KING                                                                                                                                                                                         
+CLARK      KING                                                                                                                                                                                         
+SCOTT      JONES                                                                                                                                                                                        
+TURNER     BLAKE                                                                                                                                                                                        
+ADAMS      SCOTT                                                                                                                                                                                        
+JAMES      BLAKE                                                                                                                                                                                        
+FORD       JONES                                                                                                                                                                                        
+MILLER     CLARK                                                                                                                                                                                        
+
+13 rows selected.
+
+SQL> SELECT E1.ENAME,E1.SAL,E2.ENAME,E2.SAL
+  2  FROM EMP E1,EMP E2
+  3  WHERE E1.JOB = 'ANALYST' AND E1.MGR = E2.EMPNO;
+
+ENAME             SAL ENAME             SAL                                                                                                                                                             
+---------- ---------- ---------- ----------                                                                                                                                                             
+SCOTT            3000 JONES            2975                                                                                                                                                             
+FORD             3000 JONES            2975                                                                                                                                                             
+
+SQL> 
+SQL> SELECT E.ENAME,D.DNAME
+  2  FROM EMP E LEFT OUTER JOIN DEPT D
+  3  ON E.DEPTNO = D.DEPTNO;
+
+ENAME      DNAME                                                                                                                                                                                        
+---------- --------------                                                                                                                                                                               
+SMITH      RESEARCH                                                                                                                                                                                     
+ALLEN      SALES                                                                                                                                                                                        
+WARD       SALES                                                                                                                                                                                        
+JONES      RESEARCH                                                                                                                                                                                     
+MARTIN     SALES                                                                                                                                                                                        
+BLAKE      SALES                                                                                                                                                                                        
+CLARK      ACCOUNTING                                                                                                                                                                                   
+SCOTT      RESEARCH                                                                                                                                                                                     
+KING       ACCOUNTING                                                                                                                                                                                   
+TURNER     SALES                                                                                                                                                                                        
+ADAMS      RESEARCH                                                                                                                                                                                     
+JAMES      SALES                                                                                                                                                                                        
+FORD       RESEARCH                                                                                                                                                                                     
+MILLER     ACCOUNTING                                                                                                                                                                                   
+
+14 rows selected.
+
+SQL> SELECT E.ENAME,D.DNAME
+  2  FROM EMP E RIGHT OUTER JOIN DEPT D
+  3  ON E.DEPTNO = D.DEPTNO;
+
+ENAME      DNAME                                                                                                                                                                                        
+---------- --------------                                                                                                                                                                               
+CLARK      ACCOUNTING                                                                                                                                                                                   
+KING       ACCOUNTING                                                                                                                                                                                   
+MILLER     ACCOUNTING                                                                                                                                                                                   
+JONES      RESEARCH                                                                                                                                                                                     
+FORD       RESEARCH                                                                                                                                                                                     
+ADAMS      RESEARCH                                                                                                                                                                                     
+SMITH      RESEARCH                                                                                                                                                                                     
+SCOTT      RESEARCH                                                                                                                                                                                     
+WARD       SALES                                                                                                                                                                                        
+TURNER     SALES                                                                                                                                                                                        
+ALLEN      SALES                                                                                                                                                                                        
+JAMES      SALES                                                                                                                                                                                        
+BLAKE      SALES                                                                                                                                                                                        
+MARTIN     SALES                                                                                                                                                                                        
+           OPERATIONS                                                                                                                                                                                   
+
+15 rows selected.
+
+SQL> SELECT E.ENAME,D.DNAME
+  2  FROM EMP E FULL JOIN DEPT D
+  3  ON E.DEPTNO = D.DEPTNO;
+
+ENAME      DNAME                                                                                                                                                                                        
+---------- --------------                                                                                                                                                                               
+SMITH      RESEARCH                                                                                                                                                                                     
+ALLEN      SALES                                                                                                                                                                                        
+WARD       SALES                                                                                                                                                                                        
+JONES      RESEARCH                                                                                                                                                                                     
+MARTIN     SALES                                                                                                                                                                                        
+BLAKE      SALES                                                                                                                                                                                        
+CLARK      ACCOUNTING                                                                                                                                                                                   
+SCOTT      RESEARCH                                                                                                                                                                                     
+KING       ACCOUNTING                                                                                                                                                                                   
+TURNER     SALES                                                                                                                                                                                        
+ADAMS      RESEARCH                                                                                                                                                                                     
+JAMES      SALES                                                                                                                                                                                        
+FORD       RESEARCH                                                                                                                                                                                     
+MILLER     ACCOUNTING                                                                                                                                                                                   
+           OPERATIONS                                                                                                                                                                                   
+
+15 rows selected.
+
+SQL> SPOOL OFF

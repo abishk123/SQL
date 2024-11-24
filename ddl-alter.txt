@@ -1,0 +1,95 @@
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+PRODUCT                        TABLE                                                                                                                                                                    
+CUSTOMER                       TABLE                                                                                                                                                                    
+PLAYER                         TABLE                                                                                                                                                                    
+CRICKET                        TABLE                                                                                                                                                                    
+AUTHOR                         TABLE                                                                                                                                                                    
+BOOK                           TABLE                                                                                                                                                                    
+DOCTOR                         TABLE                                                                                                                                                                    
+PATIENT                        TABLE                                                                                                                                                                    
+
+12 rows selected.
+
+SQL> desc patient
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ PNAME                                                                                                             NOT NULL VARCHAR2(20)
+ PID                                                                                                               NOT NULL NUMBER(5)
+ CONTACT                                                                                                                    NUMBER(10)
+ ADDRESS                                                                                                           NOT NULL VARCHAR2(20)
+ PDOCTOR                                                                                                                    VARCHAR2(15)
+ AGE                                                                                                                        NUMBER(3)
+
+SQL> ALTER TABLE PATIENT
+  2  ADD GENDER VARCHAR(6)NOT NULL UNIQUE;
+
+Table altered.
+
+SQL> ALTER TABLE PATIENT
+  2  MODIFY GENDER VARCHAR(6)NOT NULL;
+MODIFY GENDER VARCHAR(6)NOT NULL
+       *
+ERROR at line 2:
+ORA-01442: column to be modified to NOT NULL is already NOT NULL 
+
+
+SQL> ALTER TABLE PATIENT
+  2  MODIFY GENDER VARCHAR(6)DEFAULT(MALE);
+MODIFY GENDER VARCHAR(6)DEFAULT(MALE)
+                                *
+ERROR at line 2:
+ORA-00984: column not allowed here 
+
+
+SQL> ALTER TABLE PATIENT
+  2  MODIFY GENDER VARCHAR(6)DEFAULT('MALE');
+
+Table altered.
+
+SQL> DESC PATIENT
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ PNAME                                                                                                             NOT NULL VARCHAR2(20)
+ PID                                                                                                               NOT NULL NUMBER(5)
+ CONTACT                                                                                                                    NUMBER(10)
+ ADDRESS                                                                                                           NOT NULL VARCHAR2(20)
+ PDOCTOR                                                                                                                    VARCHAR2(15)
+ AGE                                                                                                                        NUMBER(3)
+ GENDER                                                                                                            NOT NULL VARCHAR2(6)
+
+SQL> ALTER TABLE PATIENT
+  2  DROP COLUMN ADDRESS;
+
+Table altered.
+
+SQL> DESC PATIENT
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ PNAME                                                                                                             NOT NULL VARCHAR2(20)
+ PID                                                                                                               NOT NULL NUMBER(5)
+ CONTACT                                                                                                                    NUMBER(10)
+ PDOCTOR                                                                                                                    VARCHAR2(15)
+ AGE                                                                                                                        NUMBER(3)
+ GENDER                                                                                                            NOT NULL VARCHAR2(6)
+
+SQL> ALTER TABLE PATIENT
+  2  RENAME CONTACT TO MNO;
+RENAME CONTACT TO MNO
+       *
+ERROR at line 2:
+ORA-14155: missing PARTITION or SUBPARTITION keyword 
+
+
+SQL> ALTER TABLE PATIENT
+  2  RENAME COLUMN CONTACT TO MNO;
+
+Table altered.
+
+SQL> SPOOL OFF

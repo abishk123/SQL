@@ -1,0 +1,189 @@
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+
+SQL> SELECT 200 FROM DEPT;
+
+       200                                                                                                                                                                                              
+----------                                                                                                                                                                                              
+       200                                                                                                                                                                                              
+       200                                                                                                                                                                                              
+       200                                                                                                                                                                                              
+       200                                                                                                                                                                                              
+
+SQL> SELECT 'RAM' FROM SALGRADE;
+
+'RA                                                                                                                                                                                                     
+---                                                                                                                                                                                                     
+RAM                                                                                                                                                                                                     
+RAM                                                                                                                                                                                                     
+RAM                                                                                                                                                                                                     
+RAM                                                                                                                                                                                                     
+RAM                                                                                                                                                                                                     
+
+SQL> SELECT '19-JAN-22' FROM EMP;
+
+'19-JAN-2                                                                                                                                                                                               
+---------                                                                                                                                                                                               
+19-JAN-22                                                                                                                                                                                               
+19-JAN-22                                                                                                                                                                                               
+19-JAN-22                                                                                                                                                                                               
+19-JAN-22                                                                                                                                                                                               
+19-JAN-22                                                                                                                                                                                               
+19-JAN-22                                                                                                                                                                                               
+19-JAN-22                                                                                                                                                                                               
+19-JAN-22                                                                                                                                                                                               
+19-JAN-22                                                                                                                                                                                               
+19-JAN-22                                                                                                                                                                                               
+19-JAN-22                                                                                                                                                                                               
+19-JAN-22                                                                                                                                                                                               
+19-JAN-22                                                                                                                                                                                               
+19-JAN-22                                                                                                                                                                                               
+
+14 rows selected.
+
+SQL> SELECT SAL||JOB FROM EMP;
+
+SAL||JOB                                                                                                                                                                                                
+-------------------------------------------------                                                                                                                                                       
+800CLERK                                                                                                                                                                                                
+1600SALESMAN                                                                                                                                                                                            
+1250SALESMAN                                                                                                                                                                                            
+2975MANAGER                                                                                                                                                                                             
+1250SALESMAN                                                                                                                                                                                            
+2850MANAGER                                                                                                                                                                                             
+2450MANAGER                                                                                                                                                                                             
+3000ANALYST                                                                                                                                                                                             
+5000PRESIDENT                                                                                                                                                                                           
+1500SALESMAN                                                                                                                                                                                            
+1100CLERK                                                                                                                                                                                               
+950CLERK                                                                                                                                                                                                
+3000ANALYST                                                                                                                                                                                             
+1300CLERK                                                                                                                                                                                               
+
+14 rows selected.
+
+SQL> SELECT RAM FROM DUAL;
+SELECT RAM FROM DUAL
+       *
+ERROR at line 1:
+ORA-00904: "RAM": invalid identifier 
+
+
+SQL> SELECT 'RAM' FROM DUAL;
+
+'RA                                                                                                                                                                                                     
+---                                                                                                                                                                                                     
+RAM                                                                                                                                                                                                     
+
+SQL> SELECT * FROM DUAL;
+
+D                                                                                                                                                                                                       
+-                                                                                                                                                                                                       
+X                                                                                                                                                                                                       
+
+SQL> SELECT 'SQL'||112 FROM DUAL;
+
+'SQL'|                                                                                                                                                                                                  
+------                                                                                                                                                                                                  
+SQL112                                                                                                                                                                                                  
+
+SQL> SELECT 'SQL'||'+
+  2  
+SQL> SELECT 'SQL'||'+';
+SELECT 'SQL'||'+'
+                *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT 'SQL'||'PLUS' FROM DUAL;
+
+'SQL'||                                                                                                                                                                                                 
+-------                                                                                                                                                                                                 
+SQLPLUS                                                                                                                                                                                                 
+
+SQL> SELECT 'SQL'||'17-JUL-24' FROM DUAL;
+
+'SQL'||'17-J                                                                                                                                                                                            
+------------                                                                                                                                                                                            
+SQL17-JUL-24                                                                                                                                                                                            
+
+SQL> SELECT ENAME||' IS WORKING AS '||JOB||' IN DEPT '||DEPTNO FROM EMP;
+
+ENAME||'ISWORKINGAS'||JOB||'INDEPT'||DEPTNO                                                                                                                                                             
+-----------------------------------------------------------------------------------                                                                                                                     
+SMITH IS WORKING AS CLERK IN DEPT 20                                                                                                                                                                    
+ALLEN IS WORKING AS SALESMAN IN DEPT 30                                                                                                                                                                 
+WARD IS WORKING AS SALESMAN IN DEPT 30                                                                                                                                                                  
+JONES IS WORKING AS MANAGER IN DEPT 20                                                                                                                                                                  
+MARTIN IS WORKING AS SALESMAN IN DEPT 30                                                                                                                                                                
+BLAKE IS WORKING AS MANAGER IN DEPT 30                                                                                                                                                                  
+CLARK IS WORKING AS MANAGER IN DEPT 10                                                                                                                                                                  
+SCOTT IS WORKING AS ANALYST IN DEPT 20                                                                                                                                                                  
+KING IS WORKING AS PRESIDENT IN DEPT 10                                                                                                                                                                 
+TURNER IS WORKING AS SALESMAN IN DEPT 30                                                                                                                                                                
+ADAMS IS WORKING AS CLERK IN DEPT 20                                                                                                                                                                    
+JAMES IS WORKING AS CLERK IN DEPT 30                                                                                                                                                                    
+FORD IS WORKING AS ANALYST IN DEPT 20                                                                                                                                                                   
+MILLER IS WORKING AS CLERK IN DEPT 10                                                                                                                                                                   
+
+14 rows selected.
+
+SQL> SELECT 'THE EMPLOYEE WHO IS NAMED AS '||ENAME||' IS WORKING AS A '||JOB||' AND EARNING SALARY EXACTLY '||SAL FROM EMP;
+
+'THEEMPLOYEEWHOISNAMEDAS'||ENAME||'ISWORKINGASA'||JOB||'ANDEARNINGSALARYEXACTLY'||SAL                                                                                                                   
+-------------------------------------------------------------------------------------------------------------------------------------                                                                   
+THE EMPLOYEE WHO IS NAMED AS SMITH IS WORKING AS A CLERK AND EARNING SALARY EXACTLY 800                                                                                                                 
+THE EMPLOYEE WHO IS NAMED AS ALLEN IS WORKING AS A SALESMAN AND EARNING SALARY EXACTLY 1600                                                                                                             
+THE EMPLOYEE WHO IS NAMED AS WARD IS WORKING AS A SALESMAN AND EARNING SALARY EXACTLY 1250                                                                                                              
+THE EMPLOYEE WHO IS NAMED AS JONES IS WORKING AS A MANAGER AND EARNING SALARY EXACTLY 2975                                                                                                              
+THE EMPLOYEE WHO IS NAMED AS MARTIN IS WORKING AS A SALESMAN AND EARNING SALARY EXACTLY 1250                                                                                                            
+THE EMPLOYEE WHO IS NAMED AS BLAKE IS WORKING AS A MANAGER AND EARNING SALARY EXACTLY 2850                                                                                                              
+THE EMPLOYEE WHO IS NAMED AS CLARK IS WORKING AS A MANAGER AND EARNING SALARY EXACTLY 2450                                                                                                              
+THE EMPLOYEE WHO IS NAMED AS SCOTT IS WORKING AS A ANALYST AND EARNING SALARY EXACTLY 3000                                                                                                              
+THE EMPLOYEE WHO IS NAMED AS KING IS WORKING AS A PRESIDENT AND EARNING SALARY EXACTLY 5000                                                                                                             
+THE EMPLOYEE WHO IS NAMED AS TURNER IS WORKING AS A SALESMAN AND EARNING SALARY EXACTLY 1500                                                                                                            
+THE EMPLOYEE WHO IS NAMED AS ADAMS IS WORKING AS A CLERK AND EARNING SALARY EXACTLY 1100                                                                                                                
+THE EMPLOYEE WHO IS NAMED AS JAMES IS WORKING AS A CLERK AND EARNING SALARY EXACTLY 950                                                                                                                 
+THE EMPLOYEE WHO IS NAMED AS FORD IS WORKING AS A ANALYST AND EARNING SALARY EXACTLY 3000                                                                                                               
+THE EMPLOYEE WHO IS NAMED AS MILLER IS WORKING AS A CLERK AND EARNING SALARY EXACTLY 1300                                                                                                               
+
+14 rows selected.
+
+SQL> SELECT ENAME||' IS AN EMPLOYEE WHO IS HAVING A ID '||EMPID||' WORKING IN DEPT '||DEPTNO||' AND JOINED ON '||HIREDATE FROM EMP;
+SELECT ENAME||' IS AN EMPLOYEE WHO IS HAVING A ID '||EMPID||' WORKING IN DEPT '||DEPTNO||' AND JOINED ON '||HIREDATE FROM EMP
+                                                     *
+ERROR at line 1:
+ORA-00904: "EMPID": invalid identifier 
+
+
+SQL> SELECT * FROM EMP
+  2  WHERE ENAME = 'SMITH';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                   
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20                                                                                                                   
+
+SQL>  SELECT ENAME||' IS AN EMPLOYEE WHO IS HAVING A ID '||EMPID||' WORKING IN DEPT '||DEPTNO||' ANDJOINED ON '||HIREDATE FROM EMP
+  2  WHERE JOB = 'ANALYST';
+ SELECT ENAME||' IS AN EMPLOYEE WHO IS HAVING A ID '||EMPID||' WORKING IN DEPT '||DEPTNO||' ANDJOINED ON '||HIREDATE FROM EMP
+                                                      *
+ERROR at line 1:
+ORA-00904: "EMPID": invalid identifier 
+
+
+SQL> SELECT ENAME||' IS AN EMPLOYEE WHO IS HAVING A ID '||EMPNO||' WORKING IN DEPT '||DEPTNO||' ANDJOINED ON '||HIREDATE FROM EMP
+  2  WHERE JOB = 'ANALYST';
+
+ENAME||'ISANEMPLOYEEWHOISHAVINGAID'||EMPNO||'WORKINGINDEPT'||DEPTNO||'ANDJOINEDON'||HIREDATE                                                                                                            
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------                                   
+SCOTT IS AN EMPLOYEE WHO IS HAVING A ID 7788 WORKING IN DEPT 20 ANDJOINED ON 19-APR-87                                                                                                                  
+FORD IS AN EMPLOYEE WHO IS HAVING A ID 7902 WORKING IN DEPT 20 ANDJOINED ON 03-DEC-81                                                                                                                   
+
+SQL> SPOOL OFF

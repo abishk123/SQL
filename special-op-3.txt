@@ -1,0 +1,209 @@
+SQL> select * from emp
+  2  where ename('SMITH','ALLEN','SCOTT');
+where ename('SMITH','ALLEN','SCOTT')
+                                   *
+ERROR at line 2:
+ORA-00920: invalid relational operator 
+
+
+SQL> SELECT * FROM EMP
+  2  WHERE ENAME IN ('SMITH','ALLEN','SCOTT');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7369 SMITH      CLERK           7902 17-DEC-80        800                 
+        20                                                                      
+                                                                                
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300      
+        30                                                                      
+                                                                                
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                 
+        20                                                                      
+                                                                                
+
+SQL> SELECT * FROM DEPT
+  2  WHERE LOC IN ('CHICAGO','NEWYORK');
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        30 SALES          CHICAGO                                               
+
+SQL> SELECT * FROM DEPT
+  2  WHERE LOC IN ('CHICAGO','NEW YORK');
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        10 ACCOUNTING     NEW YORK                                              
+        30 SALES          CHICAGO                                               
+
+SQL> SELECT * FROM EMP
+  2  WHERE JOB IN ('CLERK','SALESMAN') AND DEPTNO IN (20, 30);
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7369 SMITH      CLERK           7902 17-DEC-80        800                 
+        20                                                                      
+                                                                                
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300      
+        30                                                                      
+                                                                                
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500      
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400      
+        30                                                                      
+                                                                                
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0      
+        30                                                                      
+                                                                                
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                 
+        20                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7900 JAMES      CLERK           7698 03-DEC-81        950                 
+        30                                                                      
+                                                                                
+
+7 rows selected.
+
+SQL> SELECT EMPNO AS EID FROM EMP;
+
+       EID                                                                      
+----------                                                                      
+      7369                                                                      
+      7499                                                                      
+      7521                                                                      
+      7566                                                                      
+      7654                                                                      
+      7698                                                                      
+      7782                                                                      
+      7788                                                                      
+      7839                                                                      
+      7844                                                                      
+      7876                                                                      
+
+       EID                                                                      
+----------                                                                      
+      7900                                                                      
+      7902                                                                      
+      7934                                                                      
+
+14 rows selected.
+
+SQL> SELECT EMPNO EID FROM EMP;
+
+       EID                                                                      
+----------                                                                      
+      7369                                                                      
+      7499                                                                      
+      7521                                                                      
+      7566                                                                      
+      7654                                                                      
+      7698                                                                      
+      7782                                                                      
+      7788                                                                      
+      7839                                                                      
+      7844                                                                      
+      7876                                                                      
+
+       EID                                                                      
+----------                                                                      
+      7900                                                                      
+      7902                                                                      
+      7934                                                                      
+
+14 rows selected.
+
+SQL> SELECT ENAME AS EMP_NAME, JOB AS DESIGNATION, HIREDATE AS "JOINING DATE" FROM EMP;
+
+EMP_NAME   DESIGNATI JOINING D                                                  
+---------- --------- ---------                                                  
+SMITH      CLERK     17-DEC-80                                                  
+ALLEN      SALESMAN  20-FEB-81                                                  
+WARD       SALESMAN  22-FEB-81                                                  
+JONES      MANAGER   02-APR-81                                                  
+MARTIN     SALESMAN  28-SEP-81                                                  
+BLAKE      MANAGER   01-MAY-81                                                  
+CLARK      MANAGER   09-JUN-81                                                  
+SCOTT      ANALYST   19-APR-87                                                  
+KING       PRESIDENT 17-NOV-81                                                  
+TURNER     SALESMAN  08-SEP-81                                                  
+ADAMS      CLERK     23-MAY-87                                                  
+
+EMP_NAME   DESIGNATI JOINING D                                                  
+---------- --------- ---------                                                  
+JAMES      CLERK     03-DEC-81                                                  
+FORD       ANALYST   03-DEC-81                                                  
+MILLER     CLERK     23-JAN-82                                                  
+
+14 rows selected.
+
+SQL> SELECT ENAME EMP_NAME, JOB DESIGNATION, HIREDATE JOININGDATE FROM EMP;
+
+EMP_NAME   DESIGNATI JOININGDA                                                  
+---------- --------- ---------                                                  
+SMITH      CLERK     17-DEC-80                                                  
+ALLEN      SALESMAN  20-FEB-81                                                  
+WARD       SALESMAN  22-FEB-81                                                  
+JONES      MANAGER   02-APR-81                                                  
+MARTIN     SALESMAN  28-SEP-81                                                  
+BLAKE      MANAGER   01-MAY-81                                                  
+CLARK      MANAGER   09-JUN-81                                                  
+SCOTT      ANALYST   19-APR-87                                                  
+KING       PRESIDENT 17-NOV-81                                                  
+TURNER     SALESMAN  08-SEP-81                                                  
+ADAMS      CLERK     23-MAY-87                                                  
+
+EMP_NAME   DESIGNATI JOININGDA                                                  
+---------- --------- ---------                                                  
+JAMES      CLERK     03-DEC-81                                                  
+FORD       ANALYST   03-DEC-81                                                  
+MILLER     CLERK     23-JAN-82                                                  
+
+14 rows selected.
+
+SQL> SELECT ENAME EMP_NAME, JOB DESIGNATION, HIREDATE JOINING DATE FROM EMP;
+SELECT ENAME EMP_NAME, JOB DESIGNATION, HIREDATE JOINING DATE FROM EMP
+                                                         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT ENAME EMP_NAME, JOB DESIGNATION, HIREDATE "JOINING DATE" FROM EMP;
+
+EMP_NAME   DESIGNATI JOINING D                                                  
+---------- --------- ---------                                                  
+SMITH      CLERK     17-DEC-80                                                  
+ALLEN      SALESMAN  20-FEB-81                                                  
+WARD       SALESMAN  22-FEB-81                                                  
+JONES      MANAGER   02-APR-81                                                  
+MARTIN     SALESMAN  28-SEP-81                                                  
+BLAKE      MANAGER   01-MAY-81                                                  
+CLARK      MANAGER   09-JUN-81                                                  
+SCOTT      ANALYST   19-APR-87                                                  
+KING       PRESIDENT 17-NOV-81                                                  
+TURNER     SALESMAN  08-SEP-81                                                  
+ADAMS      CLERK     23-MAY-87                                                  
+
+EMP_NAME   DESIGNATI JOINING D                                                  
+---------- --------- ---------                                                  
+JAMES      CLERK     03-DEC-81                                                  
+FORD       ANALYST   03-DEC-81                                                  
+MILLER     CLERK     23-JAN-82                                                  
+
+14 rows selected.
+
+SQL> SPOOL OFF

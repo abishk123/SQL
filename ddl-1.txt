@@ -1,0 +1,287 @@
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+PRODUCT                        TABLE                                                                                                                                                                    
+CUSTOMER                       TABLE                                                                                                                                                                    
+PLAYER                         TABLE                                                                                                                                                                    
+CRICKET                        TABLE                                                                                                                                                                    
+
+8 rows selected.
+
+SQL> desc player
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ PNO                                                                                                               NOT NULL NUMBER(3)
+ PNAME                                                                                                             NOT NULL VARCHAR2(10)
+ BOARD                                                                                                                      VARCHAR2(20)
+ AGE                                                                                                                        NUMBER(2)
+ DEBUT                                                                                                                      DATE
+ POSITION                                                                                                          NOT NULL VARCHAR2(20)
+ HEIGHTIN_CM                                                                                                                NUMBER(3)
+
+SQL> desc cricket
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ BOARD                                                                                                             NOT NULL VARCHAR2(20)
+ VENUE                                                                                                             NOT NULL VARCHAR2(20)
+ LEAGUE                                                                                                                     VARCHAR2(20)
+ TOTAL_MATCHES                                                                                                              NUMBER(2)
+ DURATION                                                                                                                   NUMBER(2)
+ NOOF_TEAMS                                                                                                                 NUMBER(2)
+
+SQL> desc product
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ PID                                                                                                               NOT NULL NUMBER(5)
+ PNAME                                                                                                                      VARCHAR2(15)
+ PRICE                                                                                                                      NUMBER(3)
+ PSTOCK                                                                                                                     NUMBER(3)
+ MFD                                                                                                                        DATE
+
+SQL> desc customer
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ CID                                                                                                               NOT NULL NUMBER(5)
+ CNAME                                                                                                             NOT NULL VARCHAR2(15)
+ AGE                                                                                                               NOT NULL NUMBER(2)
+ NOOFITEMS                                                                                                                  NUMBER(2)
+ PRODUCTS                                                                                                                   NUMBER(5)
+
+SQL> create table AUTHOR(AID NUMBER(6)PRIMARY KEY,
+  2  ANAME VARCHAR(20) UNIQUE+NOT NULL,
+  3  AGE NUMBER(2)NOT NULL,
+  4  BOOKS_WRITTEN INT DEFAULT(1),
+  5  ADDRESS VARCHAR(20)UNIQUE,
+  6  MNO NUMBER(10)UNIQUE + NOT NULL);
+ANAME VARCHAR(20) UNIQUE+NOT NULL,
+                        *
+ERROR at line 2:
+ORA-00907: missing right parenthesis 
+
+
+SQL>  create table AUTHOR(AID NUMBER(6)PRIMARY KEY,
+  2  ANAME VARCHAR(20)(UNIQUE+NOT NULL),
+  3  AGE NUMBER(2)NOT NULL,
+  4  BOOKS_WRITTEN INT DEFAULT(1),
+  5  ADDRESS VARCHAR(20)UNIQUE,
+  6  MNO NUMBER(10)UNIQUE + NOT NULL);
+ANAME VARCHAR(20)(UNIQUE+NOT NULL),
+                 *
+ERROR at line 2:
+ORA-00907: missing right parenthesis 
+
+
+SQL> create table AUTHOR(AID
+  2  ANAME VARCHAR(20) UNIQUE NOT NULL,
+  3  AGE NUMBER(2)NOT NULL,
+  4  BOOKS_WRITTEN INT DEFAULT(1),
+  5  ADDRESS VARCHAR(20)UNIQUE,
+  6  
+SQL> create table AUTHOR(AID NUMBER(6)PRIMARY KEY,
+  2  ANAME VARCHAR(20) UNIQUE NOT NULL,
+  3  AGE NUMBER(2)NOT NULL,
+  4  BOOKS_WRITTEN INT DEFAULT(1),
+  5  ADDRESS VARCHAR(20)UNIQUE,
+  6  MNO NUMBER(10)UNIQUE NOT NULL,
+  7  GENDER VARCHAR(6));
+
+Table created.
+
+SQL> ALTER TABLE AUTHOR
+  2  ADD EMAIL VARCHAR(20)UNIQUE NOT NULL;
+
+Table altered.
+
+SQL> DESC AUTHOR
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ AID                                                                                                               NOT NULL NUMBER(6)
+ ANAME                                                                                                             NOT NULL VARCHAR2(20)
+ AGE                                                                                                               NOT NULL NUMBER(2)
+ BOOKS_WRITTEN                                                                                                              NUMBER(38)
+ ADDRESS                                                                                                                    VARCHAR2(20)
+ MNO                                                                                                               NOT NULL NUMBER(10)
+ GENDER                                                                                                                     VARCHAR2(6)
+ EMAIL                                                                                                             NOT NULL VARCHAR2(20)
+
+SQL> CREATE TABLE BOOK(NAME VARCHAR(20)UNIQUE NOT NULL,
+  2  BID NUMBER(5)PRIMARY KEY,
+  3  PUBLISHER VARCHAR(10)NOT NULL,
+  4  PUBLISHEDON DATE,
+  5  AUTHOR NUMBER(6)FOREIGN KEY REFERENCES AUTHOR(AID));
+AUTHOR NUMBER(6)FOREIGN KEY REFERENCES AUTHOR(AID))
+                *
+ERROR at line 5:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE BOOK(NAME VARCHAR(20)UNIQUE NOT NULL,
+  2  BID NUMBER(5)PRIMARY KEY,
+  3  PUBLISHER VARCHAR(10)NOT NULL,
+  4  PUBLISHEDON DATE,
+  5  AUTHOR NUMBER(6) REFERENCES AUTHOR(AID));
+
+Table created.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+PRODUCT                        TABLE                                                                                                                                                                    
+CUSTOMER                       TABLE                                                                                                                                                                    
+PLAYER                         TABLE                                                                                                                                                                    
+CRICKET                        TABLE                                                                                                                                                                    
+AUTHOR                         TABLE                                                                                                                                                                    
+BOOK                           TABLE                                                                                                                                                                    
+
+10 rows selected.
+
+SQL> CREATE TABLE DOCTOR(DNAME VARCHAR(20)UNIQUE NOT NULL,
+  2  
+SQL> 
+SQL> CREATE TABLE DOCTOR(DNAME VARCHAR(20)PRIMARY KEY,
+  2  DID NUMBER(7)UNIQUE NOT NULL,
+  3  CONTACT NUMBER(10)UNIQUE NOT NULL,
+  4  EMAIL VARCHAR(20)UNIQUE,
+  5  AGE NUMBER(2)CHECK(AGE>20),
+  6  ADDRESS VARCHAR(20)DEFAULT(HOSPITAL ADDR));
+ADDRESS VARCHAR(20)DEFAULT(HOSPITAL ADDR))
+                           *
+ERROR at line 6:
+ORA-00984: column not allowed here 
+
+
+SQL> CREATE TABLE DOCTOR(DNAME VARCHAR(20)PRIMARY KEY,
+  2  DID NUMBER(7)UNIQUE NOT NULL,
+  3  CONTACT NUMBER(10)UNIQUE NOT NULL,
+  4  EMAIL VARCHAR(20)UNIQUE,
+  5  AGE NUMBER(2)CHECK(AGE>20),
+  6  ADDRESS VARCHAR(20)DEFAULT('HOSPITAL ADDR'));
+
+Table created.
+
+SQL> CREATE TABLE PATIENT(PNAME VARCHAR(20)UNIQUE NOT NULL,
+  2  PID NUMBER(5)PRIMARY KEY,
+  3  CONTACT NUMBER(10)UNUQUE,
+  4  ADDRESS VARCHAR(20)NOT NULL,
+  5  PAT.DOCTOR VARCHAR(15) REFERENCES DOCTOR(DNAME),
+  6  AGE NUMBER(3)CHECK(AGE<120));
+CONTACT NUMBER(10)UNUQUE,
+                  *
+ERROR at line 3:
+ORA-00907: missing right parenthesis 
+
+
+SQL> CREATE TABLE PATIENT(PNAME VARCHAR(20)UNIQUE NOT NULL,
+  2  PID NUMBER(5)PRIMARY KEY,
+  3  CONTACT NUMBER(10)UNIQUE,
+  4  ADDRESS VARCHAR(20)NOT NULL,
+  5  PAT.DOCTOR VARCHAR(15) REFERENCES DOCTOR(DNAME),
+  6  AGE NUMBER(3)CHECK(AGE<120));
+PAT.DOCTOR VARCHAR(15) REFERENCES DOCTOR(DNAME),
+   *
+ERROR at line 5:
+ORA-01748: only simple column names allowed here 
+
+
+SQL> CREATE TABLE PATIENT(PNAME VARCHAR(20)UNIQUE NOT NULL,
+  2  PID NUMBER(5)PRIMARY KEY,
+  3  CONTACT NUMBER(10)UNIQUE,
+  4  ADDRESS VARCHAR(20)NOT NULL,
+  5  PDOCTOR VARCHAR(15) REFERENCES DOCTOR(DNAME),
+  6  AGE NUMBER(3)CHECK(AGE<120));
+
+Table created.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                                                                                                                                                       
+------------------------------ ------- ----------                                                                                                                                                       
+DEPT                           TABLE                                                                                                                                                                    
+EMP                            TABLE                                                                                                                                                                    
+BONUS                          TABLE                                                                                                                                                                    
+SALGRADE                       TABLE                                                                                                                                                                    
+PRODUCT                        TABLE                                                                                                                                                                    
+CUSTOMER                       TABLE                                                                                                                                                                    
+PLAYER                         TABLE                                                                                                                                                                    
+CRICKET                        TABLE                                                                                                                                                                    
+AUTHOR                         TABLE                                                                                                                                                                    
+BOOK                           TABLE                                                                                                                                                                    
+DOCTOR                         TABLE                                                                                                                                                                    
+PATIENT                        TABLE                                                                                                                                                                    
+
+12 rows selected.
+
+SQL> SELECT * FROM EMP,DEPT;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO     DEPTNO DNAME          LOC                                                                                     
+---------- ---------- --------- ---------- --------- ---------- ---------- ---------- ---------- -------------- -------------                                                                           
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         10 ACCOUNTING     NEW YORK                                                                                
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30         10 ACCOUNTING     NEW YORK                                                                                
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30         10 ACCOUNTING     NEW YORK                                                                                
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         10 ACCOUNTING     NEW YORK                                                                                
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30         10 ACCOUNTING     NEW YORK                                                                                
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30         10 ACCOUNTING     NEW YORK                                                                                
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10         10 ACCOUNTING     NEW YORK                                                                                
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         10 ACCOUNTING     NEW YORK                                                                                
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10         10 ACCOUNTING     NEW YORK                                                                                
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30         10 ACCOUNTING     NEW YORK                                                                                
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         10 ACCOUNTING     NEW YORK                                                                                
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         10 ACCOUNTING     NEW YORK                                                                                
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20         10 ACCOUNTING     NEW YORK                                                                                
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10         10 ACCOUNTING     NEW YORK                                                                                
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         20 RESEARCH       DALLAS                                                                                  
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30         20 RESEARCH       DALLAS                                                                                  
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30         20 RESEARCH       DALLAS                                                                                  
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         20 RESEARCH       DALLAS                                                                                  
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30         20 RESEARCH       DALLAS                                                                                  
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30         20 RESEARCH       DALLAS                                                                                  
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10         20 RESEARCH       DALLAS                                                                                  
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         20 RESEARCH       DALLAS                                                                                  
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10         20 RESEARCH       DALLAS                                                                                  
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30         20 RESEARCH       DALLAS                                                                                  
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         20 RESEARCH       DALLAS                                                                                  
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         20 RESEARCH       DALLAS                                                                                  
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20         20 RESEARCH       DALLAS                                                                                  
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10         20 RESEARCH       DALLAS                                                                                  
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         30 SALES          CHICAGO                                                                                 
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30         30 SALES          CHICAGO                                                                                 
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30         30 SALES          CHICAGO                                                                                 
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         30 SALES          CHICAGO                                                                                 
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30         30 SALES          CHICAGO                                                                                 
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30         30 SALES          CHICAGO                                                                                 
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10         30 SALES          CHICAGO                                                                                 
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         30 SALES          CHICAGO                                                                                 
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10         30 SALES          CHICAGO                                                                                 
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30         30 SALES          CHICAGO                                                                                 
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         30 SALES          CHICAGO                                                                                 
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         30 SALES          CHICAGO                                                                                 
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20         30 SALES          CHICAGO                                                                                 
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10         30 SALES          CHICAGO                                                                                 
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20         40 OPERATIONS     BOSTON                                                                                  
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30         40 OPERATIONS     BOSTON                                                                                  
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30         40 OPERATIONS     BOSTON                                                                                  
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20         40 OPERATIONS     BOSTON                                                                                  
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30         40 OPERATIONS     BOSTON                                                                                  
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30         40 OPERATIONS     BOSTON                                                                                  
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10         40 OPERATIONS     BOSTON                                                                                  
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                    20         40 OPERATIONS     BOSTON                                                                                  
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10         40 OPERATIONS     BOSTON                                                                                  
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30         40 OPERATIONS     BOSTON                                                                                  
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                    20         40 OPERATIONS     BOSTON                                                                                  
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30         40 OPERATIONS     BOSTON                                                                                  
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20         40 OPERATIONS     BOSTON                                                                                  
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10         40 OPERATIONS     BOSTON                                                                                  
+
+56 rows selected.
+
+SQL> SPOOL OFF
